@@ -326,67 +326,87 @@
                     </div>  
 
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-comments"></i>
-                            Chat
+                       <div class="panel-heading">
+                            <i class="fa fa-cc-visa"></i>
+                            Derniers rapports à 7
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <ul class="chat">
-
+                           <p class="pull-left">
+                            <?php
+                            if ($jeuxRapport7) {
+                                $rapport7=$jeuxRapport7[0];
+                                echo "Saisi le " . $rapport7['commentaire'];
+                            }
+                            ?>
+                            </p>
+                            <table class="table table-striped table-bordered table-hover" id="dataTables-caisse">
+                                <thead class="bg-primary ">
+                                    <tr>
+                                        <th class="text-center">Rang</th>
+                                        <th class="text-center">Nombre de grilles gagnantes</th>
+                                        <th class="text-center">Gain</th>
+                                    </tr>
+                                </thead> 
+                                <tbody>
                                 <?php
-                                for($j=0;$j<5;$j++)  {     
-                                if (sizeof($chatMessages)>$j) {
-                                   $message=$chatMessages[$j];
-                                   if ($message['ts'] !="") {
-                                   ?>
-                                    <li class="left clearfix">
-                                        <?php if ($j%2) {  ?>
-                                            <span class="chat-img pull-right">
-                                                <img class="img-circle" alt="User Avatar" src="../dist/css/i1.png">
-                                            </span>
-                                        <?php } else {  ?>
-                                            <span class="chat-img pull-left">
-                                                <img class="img-circle" alt="User Avatar" src="../dist/css/i2.png">
-                                            </span>
-                                        <?php }  ?>
-                                        <div class="chat-body clearfix">
-                                            <div class="header">
-                                            <?php if ($j%2) {  ?>
-                                                <small class=" text-muted"> 
-                                                <i class="fa fa-clock-o fa-fw"></i> <?php echo $message['ts'] ?></small>
-                                            <strong class="pull-right primary-font"><?php echo $message['nom'] ?></strong>  
-                                            <?php } else {  ?>
-                                                <strong class="primary-font"><?php echo $message['nom'] ?></strong>
-                                                <small class="pull-right text-muted">
-                                                    <i class="fa fa-clock-o fa-fw"></i> <?php echo $message['ts'] ?>
-                                                </small>
-                                            <?php }  ?>                                              
-                                            </div>
-                                            <br>
-                                            <p>
-                                                <?php echo $message['message'] ?>
-                                            </p>
-                                        </div>
-                                    </li>                                   
-                                <?php  
-                                    }                                  
-                                }  
-                                }  
+                                for($j=0;$j<sizeof($jeuxRapport7);$j++)  {                              
+                                   $rapport7=$jeuxRapport7[$j];
+                                   echo "<tr>";
+                                        echo "<td>{$rapport7['rang']}</td>";
+                                        echo "<td>{$rapport7['nombre']}</td>";
+                                        echo "<td>{$rapport7['rapport']}</td>";
+                                    echo "</tr>";
+                                }    
                                 ?> 
+                                </tbody>
+                            </table>
+              
+                        </div>    
+                    </div>   
+                    <!-- /.panel-body -->   
+              
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-cc-visa"></i>
+                            Derniers rapports à 15
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
 
-                            </ul>
+                            <p class="pull-left">
+                            <?php
+                            if ($jeuxRapport15) {
+                                $rapport15=$jeuxRapport15[0];
+                                echo "Saisi le " . $rapport15['commentaire'];
+                            }
+                            ?>
+                            </p>
+
+                             <table class="table table-striped table-bordered table-hover" id="dataTables-caisse">
+                                <thead class="bg-primary ">
+                                    <tr>
+                                        <th class="text-center">Rang</th>
+                                        <th class="text-center">Nombre de grilles gagnantes</th>
+                                        <th class="text-center">Gain</th>
+                                    </tr>
+                                </thead> 
+                                <tbody>
+                                <?php
+                                for($j=0;$j<sizeof($jeuxRapport15);$j++)  {                              
+                                   $rapport15=$jeuxRapport15[$j];
+                                   echo "<tr>";
+                                        echo "<td>{$rapport15['rang']}</td>";
+                                        echo "<td>{$rapport15['nombre']}</td>";
+                                        echo "<td>{$rapport15['rapport']}</td>";
+                                    echo "</tr>";
+                                }    
+                                ?> 
+                                </tbody>
+                            </table>                        
                         </div>
                         <!-- /.panel-body -->
-                        <a href="chat.php">
-                            <div class="panel-footer">
-                                <span class="pull-left">Je participe</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                        <!-- /.panel-footer -->
-                    </div>
+                    </div>                 
                 </div>    
 
                 <div class="col-lg-4">
@@ -495,96 +515,7 @@
                     </div>                    
                 </div>          
             </div>
-            <!-- /.row -->
-             <div class="row">
-                <div class="col-lg-6">
-                    <div class="panel panel-default">
-                       <div class="panel-heading">
-                            <i class="fa fa-cc-visa"></i>
-                            Derniers rapports à 7
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                           <p class="pull-left">
-                            <?php
-                            if ($jeuxRapport7) {
-                                $rapport7=$jeuxRapport7[0];
-                                echo "Saisi le " . $rapport7['commentaire'];
-                            }
-                            ?>
-                            </p>
-                            <table class="table table-striped table-bordered table-hover" id="dataTables-caisse">
-                                <thead class="bg-primary ">
-                                    <tr>
-                                        <th class="text-center">Rang</th>
-                                        <th class="text-center">Nombre de grilles gagnantes</th>
-                                        <th class="text-center">Gain</th>
-                                    </tr>
-                                </thead> 
-                                <tbody>
-                                <?php
-                                for($j=0;$j<sizeof($jeuxRapport7);$j++)  {                              
-                                   $rapport7=$jeuxRapport7[$j];
-                                   echo "<tr>";
-                                        echo "<td>{$rapport7['rang']}</td>";
-                                        echo "<td>{$rapport7['nombre']}</td>";
-                                        echo "<td>{$rapport7['rapport']}</td>";
-                                    echo "</tr>";
-                                }    
-                                ?> 
-                                </tbody>
-                            </table>
-              
-                        </div>    
-                    </div>   
-                    <!-- /.panel-body -->   
-                </div>      
-
-                <div class="col-lg-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-cc-visa"></i>
-                            Derniers rapports à 15
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-
-                            <p class="pull-left">
-                            <?php
-                            if ($jeuxRapport15) {
-                                $rapport15=$jeuxRapport15[0];
-                                echo "Saisi le " . $rapport15['commentaire'];
-                            }
-                            ?>
-                            </p>
-
-                             <table class="table table-striped table-bordered table-hover" id="dataTables-caisse">
-                                <thead class="bg-primary ">
-                                    <tr>
-                                        <th class="text-center">Rang</th>
-                                        <th class="text-center">Nombre de grilles gagnantes</th>
-                                        <th class="text-center">Gain</th>
-                                    </tr>
-                                </thead> 
-                                <tbody>
-                                <?php
-                                for($j=0;$j<sizeof($jeuxRapport15);$j++)  {                              
-                                   $rapport15=$jeuxRapport15[$j];
-                                   echo "<tr>";
-                                        echo "<td>{$rapport15['rang']}</td>";
-                                        echo "<td>{$rapport15['nombre']}</td>";
-                                        echo "<td>{$rapport15['rapport']}</td>";
-                                    echo "</tr>";
-                                }    
-                                ?> 
-                                </tbody>
-                            </table>                        
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>                 
-                </div>      
-            </div>
-            <!-- /.row -->    
+   
         </div>
         <!-- /#page-wrapper -->
     </div>
