@@ -1,0 +1,541 @@
+.progress-bar.selection {
+
+    font-weight: 900;
+
+}/* Titre en haut à gauche */
+
+html body div#wrapper nav.navbar.navbar-default.navbar-static-top div.navbar-header a.navbar-brand {
+
+	font-size:30px;
+
+}
+
+
+
+/* Cellule Indice de gain Type 1 en bas de la table du tableau de bord */
+
+html body div#wrapper div#page-wrapper div.row div.col-lg-12 div.panel.panel-default div.panel-body div.dataTable_wrapper table#dataTables-example.table.table-striped.table-bordered.table-hover tbody tr td.infotitre.indice1 {
+
+	font-size:11px;
+
+	background-color: #CEE3F6;
+
+}
+
+
+
+/* Cellule Indice de gain Type 2 en bas de la table du tableau de bord */
+
+html body div#wrapper div#page-wrapper div.row div.col-lg-12 div.panel.panel-default div.panel-body div.dataTable_wrapper table#dataTables-example.table.table-striped.table-bordered.table-hover tbody tr td.infotitre.indice2 {
+
+	font-size:11px;
+
+	background-color: #CEF6CE;
+
+}
+
+
+
+/* Cellule de la table du tableau de bord */
+
+html body div#wrapper div#page-wrapper div.row div.col-lg-12 div.panel.panel-default div.panel-body div.dataTable_wrapper table#dataTables-example.table.table-striped.table-bordered.table-hover tbody tr td,
+
+html body div#wrapper div#page-wrapper div.row div.col-lg-12 div.panel.panel-default div.panel-body div.dataTable_wrapper table#dataTables-example.table.table-striped.table-bordered.table-hover thead tr th {
+
+	padding: 2px;
+
+	text-align: center;
+
+}
+
+
+
+/* Entete colonne du tableau de bord des joueurs ayant été flashé */
+
+html body div#wrapper div#page-wrapper div.row div.col-lg-12 div.panel.panel-default div.panel-body div.dataTable_wrapper table#dataTables-example.table.table-striped.table-bordered.table-hover thead tr th.flash {
+
+	background-color: #D9534F;
+
+	color: #FFF;
+
+	vertical-align: center;
+
+}
+
+
+
+
+
+html body div#wrapper div#page-wrapper div.row div.col-lg-12 div.panel.panel-default div.panel-body div.dataTable_wrapper table#dataTables-example.table.table-striped.table-bordered.table-hover tbody tr.enreg td.jeutrouve {
+
+	color: #337AB7;
+
+	font-weight: 900;
+
+}
+
+
+
+/* Taille des annonces sur la page principale */
+
+.medium {
+
+    font-size: 18px !important;
+
+}
+
+
+
+.rouge {
+
+    color: #d9534f !important;
+
+}
+
+
+
+.vert {
+
+    color: #5CB85C !important;
+
+}
+
+
+
+/* Les en-têtes des tableaux centrées horisontalement le sont aussi verticalement*/
+
+th.text-center {
+
+	vertical-align: middle !important;
+
+}
+
+
+
+/* Logo en haut à gauche */
+
+html body div#wrapper nav.navbar.navbar-default.navbar-static-top div.navbar-header img {
+
+	float: left;
+
+    padding-left: 3px;
+
+    padding-top: 3px;
+
+}
+
+
+
+/* Panneau succes sur la page de consultation des résultats */
+
+.resultatSucces {
+
+    background-color: #dff0d8;
+
+    border-color: #d6e9c6;
+
+    color: #3c763d;  
+
+    margin:4px 1px;   
+
+    padding:12px 1px; 
+
+}
+
+
+
+/* Panneau echec sur la page de consultation des résultats */
+
+.resultatEchec {
+
+    background-color: #f2dede;
+
+    border-color: #ebccd1;
+
+    color: #a94442;
+
+    margin:4px 1px;   
+
+    padding:12px 1px;
+
+}
+
+
+
+/* Panneau attente sur la page de consultation des résultats */
+
+.resultatAttente {
+
+    background-color: #ffffff;
+
+    border: 1px solid;
+
+    border-color: #337AB7;
+
+    color: #337AB7;
+
+    margin:4px 1px;   
+
+    padding:12px 1px;
+
+}
+
+
+
+/* Grille de connexion avec un padding pour ne pas coller le texte à la bordure */
+
+.login-panel {
+
+    margin-top: 25%;
+
+    padding: 5%;
+
+}
+
+
+
+.page-login .login-widget {
+
+    margin: auto;
+
+    max-width: 400px;
+
+}
+
+
+
+.page-login .account-wall {
+
+    background-color: #e6e6e6;
+
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+
+    margin-top: 10%;
+
+    padding: 20px 0;
+
+}
+
+
+
+/* Arrangement de la page de login */
+
+.page-login .form-signin {
+
+    background-image: url("logo.png");
+
+    background-position: 40px 30px;;
+
+    background-repeat: no-repeat;
+
+    margin: 0 auto;
+
+    max-width: 330px;
+
+    padding: 15px;
+
+}
+
+.page-login .form-signin input#efPassWordConnexion.form-control {
+
+    margin-top: 5px;
+
+}
+
+.page-login .form-signin p#loginMessage {
+
+	margin: 10px;
+
+}
+
+
+
+.page-login .form-signin button {
+
+    width: 49%;
+
+}
+
+
+
+/* Su la page de saisie les lignes sont légèrement espacées horizontalement */
+
+.btnGroupeSaisie {
+
+    margin-bottom: 2px;
+
+}
+
+/* Su la page de saisie les lignes sont légèrement espacées horizontalement */
+
+.btnSaisie {
+
+    overflow: hidden;
+
+}
+
+
+
+/* Réduction de l'espacement entre les titres des pages et le haut de la page */
+
+.row h1.page-header {
+
+    margin-top:16px;
+
+}
+
+
+
+.progress-bar.gris {
+
+    background-color: #F5F5F5;
+
+    color: #5B5757;
+
+}
+
+
+
+.progress-bar.rouge {
+
+    background-color: #F2BDBC;
+
+    color: #6B1B19;
+
+}
+
+
+
+.progress-bar.vert {
+
+    background-color: #C5E5C5;
+
+    color: #2C332C;
+
+}
+
+
+
+
+
+.progress-bar.jaune {
+
+    background-color: #FFD77C;
+
+    color: #443C27;
+
+}
+
+
+
+
+
+.progress-bar {
+
+    font-size: 12px;
+
+    line-height: 14px;
+
+    height: 14px;
+
+}
+
+.progress {
+
+    height: 14px;
+
+    margin-bottom: 12px;
+
+    margin-top: 2px;
+
+}
+
+
+
+nav ul li a span.badge {
+
+    background: #d9534f none repeat scroll 0 0;
+
+    left: -2px;
+
+    margin-top: 0;
+
+    padding: 3px 6px;
+
+    position: relative;
+
+    top: -13px;
+
+}
+
+
+
+.label-success {
+
+    background-color: #5cb85c;
+
+}
+
+
+
+.label-warning {
+
+    background-color: #f0ad4e;
+
+}
+
+
+
+.label-danger {
+
+    background-color: #d9534f;
+
+}
+
+
+
+.chat-body div.header strong.pull-right.primary-font {
+
+    padding-right: 24px;
+
+}
+
+
+
+
+
+.panel-green a .panel-heading {
+
+    background-color: #5cb85c;
+
+    border-color: #5cb85c;
+
+    color: #fff;
+
+}
+
+
+
+.panel-primary a .panel-heading {
+
+    background-color: #337ab7;
+
+    border-color: #337ab7;
+
+    color: #fff;
+
+}
+
+
+
+.panel-yellow a .panel-heading {
+
+    background-color: #f0ad4e;
+
+    border-color: #f0ad4e;
+
+    color: #fff;
+
+}
+
+
+
+.panel-red a .panel-heading {
+
+    background-color: #d9534f;
+
+    border-color: #d9534f;
+
+    color: #fff;
+
+}
+
+
+
+
+
+div.panel-body table#tableResultats tbody tr td.gagnant {
+
+    background-color: #5CB85C;
+
+    color:#fff;
+
+}
+
+div.panel-body table#tableResultats thead tr td.flashJoueur {
+
+    background-color: #D9534F;
+
+    color:#fff;
+
+}
+
+
+
+div.panel-body table#tableResultats thead tr td.text-center,
+
+div.panel-body table#tableResultats tbody tr td.text-center {
+
+    padding: 4px 1px;
+
+}
+
+div.panel-body table#tableResultats tbody tr td.titreMatch {
+
+    padding: 4px 1px 4px 4px;
+
+}
+
+
+
+html body div#wrapper div#page-wrapper div.row.formulaire {
+
+    margin-bottom:25px;
+
+}
+
+
+
+.progress-bar.deselection {
+
+    background-color: #F5F5F5;
+
+    color: #5B5757 !important;
+
+    font-weight: 100;
+
+}
+
+
+
+.pireMoyenne {
+
+    color: #D9534F;
+
+    text-decoration: underline; 
+
+    font-weight: 700;
+
+}
+
+
+
+.meilleureMoyenne {
+
+    color: #5CB85C;
+
+    text-decoration: underline; 
+
+    font-weight: 700;
+
+}
+
+
+
+.gainMoyenne {
+
+    border: 2px solid #8B27C1 !important;
+
+    background-color:#F0E4F7;
+
+}
