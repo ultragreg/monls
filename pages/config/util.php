@@ -137,6 +137,59 @@ function getPosition($i)
   return "...";
 }
 
+// Retourne 1 si gagnant ou 0 si non
+// Prend en paramètre :
+// 1. Le nombre de jeu de ce joueur : 7, 14 (ou 15)
+// 2. Le nombre de bons résultats de ce joueur
+// 3. un tableau de rapport à 7
+// 4. un tableau de rapport à 15
+// => Dans ce tableau, l'attribut rang porte les grilles gagnantes (15, 14, 13, ... ou 7, 6, ...)
+function isGagnant($nbjeu, $nbBonResultats,$jeuxRapport7,$jeuxRapport15) 
+{
+
+   //echo "$j:".$listeJoueurs[$j]["nom"].":".$nbjeu."<BR>";
+  // C'est un jeu à 7 et les rapports à 7 sont saisis
+  if ($nbjeu==7 && sizeof($jeuxRapport7) > 0) 
+  {
+      //echo "cas 1:$nbBonResultats<BR>";
+      for($i=0;$i<sizeof($jeuxRapport7);$i++)  
+      {                        
+          $rap7=$jeuxRapport7[$i];  
+          if ($rap7['rang'] == $nbBonResultats) 
+          {
+              return 1;
+              break;
+          }               
+      }
+  }
+  // C'est un jeu à 14 ou 15 et les rapports à 15 sont saisis
+  else if ( ($nbjeu==14||$nbjeu==15) && sizeof($jeuxRapport15) > 0) 
+  {
+  //echo "cas 2:$nbBonResultats<BR>";
+      for($i=0;$i<sizeof($jeuxRapport15);$i++)  
+      {                  
+          $rap15=$jeuxRapport15[$i];   
+          if ($rap15['rang'] == $nbBonResultats) 
+          {
+              return 1;
+              break;
+          }                           
+      }
+  }
+  // Pas de rapports saisis mais un score de plus de 75%, c'est un jeu gagnant forcément !
+  else 
+  {
+  //echo "cas 3<BR>";
+      $moyenne=$nbBonResultats/$nbjeu*100;
+      if (round($moyenne,1)>75) 
+      {
+              return 1;
+      }
+  }
+  return 0;
+}
+
+
 // Retourne le pronostic d'un joueur
 function getPronoJoueur($listePronos, $joueur_id) {
   //echo "<br>+++".$joueur_id."+++";

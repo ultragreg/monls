@@ -85,7 +85,8 @@
         $nombreDeGagnants=0;
         for($j=0;$j<sizeof($listeJoueurs);$j++)
         {
-            // Ce joueur n'a pas de bon résultats
+            // Phase 1 : Pour ce joueur, on recherche le nombre de bons résultats
+            // Ce joueur n'a pas de bon résultats par défaut
             $nbBonResultats=0;
             $nbjeu=0;
             for($i=1; $i <= 15 ; $i++) 
@@ -104,13 +105,10 @@
                     }
                 }
             }
-            // Si il a plus de 75%, c'est un jeu gagnant !
+            // Phase 2 : On recherche si c'est un gagnant !
             $moyenne=0;
             if ($nbjeu>0) {
-                $moyenne=$nbBonResultats/$nbjeu*100;
-                if (round($moyenne,1)>75) {
-                   $nombreDeGagnants++; 
-                }
+                $nombreDeGagnants=$nombreDeGagnants+isGagnant($nbjeu, $nbBonResultats, $jeuxRapport7, $jeuxRapport15);
             }
         }
         include_once 'composants/nav.php';
@@ -487,8 +485,9 @@
                                             //  Second passage : affichage des résultats
                                             for($j=0;$j<sizeof($listeJoueurs);$j++) {
                                                 $classe="";
-                                                // Moyenne de plus de 75% => succès en vert !
-                                                if ($tab[$j]['moyenne']>75) {
+                                                // Moyenne de plus de 75% ou dans la liste des rapports => succès en vert !
+                                                if (1==isGagnant($tab[$j]['jeu'], $tab[$j]['nbResultat'], $jeuxRapport7, $jeuxRapport15)) 
+                                                {
                                                     $classe="success";
                                                 }
                                                 // Moyenne de 0% et des resultats saisies et des pronostics faits => echec en rouge  !

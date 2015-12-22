@@ -183,7 +183,10 @@
                                             		
                                              	$joueur_id=$tab[$j]["joueur_id"];
                                                 $classe="panel-default";
-                                                if ($tab[$j]['moyenne']>75) {
+
+                                                // Moyenne de plus de 75% ou dans la liste des rapports => succès en vert !
+                                                if (1==isGagnant($tab[$j]['nbjeu'], $tab[$j]['nbResultat'], $jeuxRapport7, $jeuxRapport15)) 
+                                                {
                                                     $classe="panel-success";
                                                 }
                                                 if ($tab[$j]['nbResultat']==0) {
@@ -537,8 +540,10 @@
 	                                        }
 	                                        if ($moyenne==$pireMoyenne) {
 	                                            	$classMoyenne="pireMoyenne";
-	                                        }                                       
-                                            if ($moyenne>75) {
+	                                        }                   
+                                            // Moyenne de plus de 75% ou dans la liste des rapports => succès en vert !
+                                            if (1==isGagnant($tableauNbMatchJoueur[$j], $tableauNbBonsResultatsJoueur[$j], $jeuxRapport7, $jeuxRapport15)) 
+                                            {
 	                                            	$classMoyenne=$classMoyenne." gainMoyenne";
 	                                        }   
                                             echo "<td class='text-center ".$classMoyenne."'>".round($moyenne,0)."</td>";
