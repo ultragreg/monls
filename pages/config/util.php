@@ -155,7 +155,7 @@ function isGagnant($nbjeu, $nbBonResultats,$jeuxRapport7,$jeuxRapport15)
       for($i=0;$i<sizeof($jeuxRapport7);$i++)  
       {                        
           $rap7=$jeuxRapport7[$i];  
-          if ($rap7['rang'] == $nbBonResultats) 
+          if ($rap7['rang'] == $nbBonResultats && $rap7['nombre']>0) 
           {
               return 1;
               break;
@@ -169,7 +169,7 @@ function isGagnant($nbjeu, $nbBonResultats,$jeuxRapport7,$jeuxRapport15)
       for($i=0;$i<sizeof($jeuxRapport15);$i++)  
       {                  
           $rap15=$jeuxRapport15[$i];   
-          if ($rap15['rang'] == $nbBonResultats) 
+          if ($rap15['rang'] == $nbBonResultats  && $rap15['nombre']>0) 
           {
               return 1;
               break;
