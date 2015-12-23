@@ -64,7 +64,13 @@
         $stmtRapport15 = $rapport->litRapports();
         $jeuxRapport15 = $stmtRapport15->fetchAll(PDO::FETCH_ASSOC);
 
-
+        // Pour les statistiques
+        $nbJeuxStat=0;
+        $nbJeux7premiersStat=0;
+        $nbJeux7derniersStat=0;   
+        $nbBonsResultatsStat =0;
+        $nbBonsResultats7premiersStat =0;
+        $nbBonsResultats7derniersStat =0;
 
         include_once 'composants/nav.php';
 
@@ -453,8 +459,13 @@
                                         $tableauNbBonsResultatsJoueur[$j]=0;
                                         $tableauNbMatchJoueur[$j]=0;
                                     }
+
+
                                     for($i=1; $i <= 15 ; $i++) {
-                                        if (getEquipe($jeu, $i, "D")!="") {
+                                        // Est-ce qu'il y a un match à cette position ? 
+                                        // Générallement, c'est pour le 15eme match mais parfois, on a des grilles qu'à 7 matchs par exemple
+                                        if (getEquipe($jeu, $i, "D")!="") 
+                                        {
 
                                             echo "<tr>";
                                             $resultatMatch= getResultat($resultat, $i);
@@ -477,12 +488,32 @@
                                                 }
 
                                                 if ($prono && isset($prono)) {
+
                                                     $valeurProno=getListePronostic($prono, $i);
                                                     if (strlen($valeurProno)>0) {
+
+
+                                                        // Pour les statistiques
+                                                        $nbJeuxStat++;
+                                                        if ($i<=7) {
+                                                            $nbJeux7premiersStat++;
+                                                        }
+                                                        else {
+                                                            $nbJeux7derniersStat++;
+                                                        }
+
                                                         $tableauNbMatchJoueur[$j]++;
                                                         if (strpos($resultatMatch,$valeurProno)!==false) {
                                                             $classJeu="gagnant";
                                                             $tableauNbBonsResultatsJoueur[$j]++;
+                                                            // Pour les statistiques
+                                                            $nbBonsResultatsStat++;
+                                                            if ($i<=7) {
+                                                                $nbBonsResultats7premiersStat++;
+                                                            }
+                                                            else {
+                                                                $nbBonsResultats7derniersStat++;
+                                                            }
                                                         }
                                                     }
                                                 } else {
@@ -492,6 +523,7 @@
                                             }
                                             echo "<td class='text-center'>{$resultatMatch}</td>";
                                             echo "</tr>";
+        
                                         }
                                     }
                                     // Le nombre de bons résultats 
@@ -615,6 +647,52 @@
                 <!-- /.row -->
             </div>
             <!-- /.row Résultats jeu par jeu -->
+
+
+
+
+            <!-- /.row Statistiques sur ce jeu -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-table fa-fw"></i>
+                            <?php echo "Statistiques sur ce jeu" ?>
+                        </div>
+                        <!-- .panel-heading -->
+                        <div class="panel-body">
+                            <ul>
+                                <?php
+                                echo "<li>$nbBonsResultatsStat bons résultats ont été trouvés lors de ce jeu.</li>";
+                                echo "<ul>";
+                                echo "<li>$nbBonsResultats7premiersStat bons résultats sur les 7 premiers matchs ($nbJeux7premiersStat pronostics).</li>";
+                                if ($nbJeux7derniersStat>0) {
+                                    echo "<li>$nbBonsResultats7derniersStat bons résultats sur les matchs suivants ($nbJeux7derniersStat pronostics).</li>";
+                                }    
+                                echo "</ul>";
+                                if ($nbJeuxStat>0) {
+                                    echo "<li>".round($nbBonsResultatsStat/$nbJeuxStat*100)." % de résultats trouvés.</li>";
+                                }
+                                echo "<ul>";
+                                if ($nbJeux7premiersStat>0) {
+                                    echo "<li>".round($nbBonsResultats7premiersStat/$nbJeux7premiersStat*100)." %  sur les 7 premiers matchs.</li>";
+                                }
+                                if ($nbJeux7derniersStat>0) {
+                                    echo "<li>".round($nbBonsResultats7derniersStat/$nbJeux7derniersStat*100)." %  sur les matchs suivants.</li>";
+                                }
+                                echo "</ul>";
+                                ?>   
+                            </ul>
+                        </div>
+                        <!-- .panel-body -->
+                    </div>
+                     <!-- /.panel -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.row Statistiques de ce jeu -->
+
+
 
             <!-- /.row -->
              <div class="row">
