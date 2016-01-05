@@ -1,9 +1,9 @@
 <?php 
 	session_start();
 /*
-Ce script lit les pronostics des matchs pour une journée donné sur le site de pronosoft
-Il est dans le cron du serveur et est exécuté toutes les 4 heures
-Le résultat est stocké dans la table 'indicateur'
+Ce script calcule les indices de gains pour un jeu et un joueur donné.
+Il va intérrogé une page du site de pronosoft avec en paramètres les pronostics du joueur
+Le résultat est renvoyé dans un tableau json
 */
 
 function clean($string) {
