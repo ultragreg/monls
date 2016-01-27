@@ -25,7 +25,7 @@
         // Nombre de Gains
         $gain = new Gain($db);
         $gain->saison_id = $saison->saison_id;
-        $stmtGains = $gain->litGains();
+        $stmtGains = $gain->litGainsDistincts();
         $num = $stmtGains->rowCount();
 
         // Recherche la liste des joueurs

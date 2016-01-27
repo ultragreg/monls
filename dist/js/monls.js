@@ -345,7 +345,11 @@
 									$( '#tbodyEstimationRapports15' ).empty();
 
 									var jsonData = JSON.parse(JSON.stringify(msg));
-									if (jsonData.length==2) {
+									// DI Greg Lafforgue 10/12/2015
+									//L’estimation des gains ne fonctionnait pas avec une grille à 7.
+									//if (jsonData.length==2) {
+									if (jsonData.length==1 || jsonData.length==2) {
+									
 										var i=0;
 									    $( '#titreEstimationRapports7' ).text(jsonData[i].titre);
 							    		for (var j = 0; j < jsonData[i].rangs.length; j++) {

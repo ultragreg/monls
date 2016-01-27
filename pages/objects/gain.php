@@ -50,6 +50,20 @@ class Gain {
 
 
 
+    function litGainsDistincts()
+    {
+      $query = "SELECT gain_id, gain.joueur_id, joueur.nom,  somme AS total, date 
+                FROM gain, joueur
+                WHERE saison_id = {$this->saison_id}
+                AND gain.joueur_id = joueur.joueur_id
+                ORDER BY total DESC";
+      $stmt = $this->conn->prepare( $query );
+      $stmt->execute();
+      return $stmt;
+    }
+
+
+
     function litGainsJson()
     {
       $query = "SELECT gain.joueur_id, joueur.nom, sum( somme ) AS total
