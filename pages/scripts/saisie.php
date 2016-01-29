@@ -300,6 +300,7 @@ if (isset($_SESSION['id_joueur'])) {
 		          $pronostic->pronostic15="";
 				  $pronostic->IndiceGain7=0;
 				  $pronostic->IndiceGain15=0;
+				  $pronostic->flash=0;
 		          // Déclare et initialise la moyenne des indices à 0
 		          $moyenne = 0;
 		          $nbCasesCoches = 0;

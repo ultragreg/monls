@@ -168,7 +168,8 @@ class Pronostic {
                     pronostic14='$pronostic14', 
                     pronostic15='$pronostic15', 
                     IndiceGain7='$IndiceGain7', 
-                    IndiceGain15='$IndiceGain15' 
+                    IndiceGain15='$IndiceGain15',
+                    flash='$flash' 
                     where pronostic_id='$pronostic_id' ";          
           $stmt = $this->conn->prepare($query);
           if (!$stmt) {
