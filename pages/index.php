@@ -290,7 +290,7 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-caisse">
                                 <thead class="bg-primary ">
                                     <tr>
-                                        <th class="text-center">Num.</th>
+                                        <th class="text-center  hidden-xs">Num.</th>
                                         <th class="text-center">Eq. domicile</th>
                                         <th class="text-center">Eq. extérieure</th>
                                         <th class="text-center">Res.</th>
@@ -302,7 +302,7 @@
                                     {
                                         if (getEquipe($jeu, $i, "D")!="") {
                                             echo "<tr>";
-                                                echo "<td class='text-center'>{$i}</td>";
+                                                echo "<td class='text-center  hidden-xs'>{$i}</td>";
                                                 echo "<td class='text-center'>".getEquipe($jeu, $i, "D")."</td>";
                                                 echo "<td class='text-center'>".getEquipe($jeu, $i, "E")."</td>";
                                                 echo "<td class='text-center'>".getResultat($resultat, $i)."</td>";
@@ -418,8 +418,8 @@
                                 <thead class="bg-primary ">
                                     <tr>
                                         <th class="text-center">Joueur</th>
-                                        <th class="text-center text-center">Score</th>
-                                        <th class="text-center text-center">Moyenne</th>
+                                        <th class="text-center">Score</th>
+                                        <th class="text-center">Moyenne</th>
                                     </tr>
                                 </thead> 
                                 <tbody>

@@ -65,10 +65,17 @@
                                     <tbody>
                                         <?php 
                                         $i=1;
+                                        $posprec=0;
                                         while ($row = $stmtClassement->fetch(PDO::FETCH_ASSOC)) {
                                             extract($row);
                                             echo "<tr>";
+                                            // On gère le cas où il y a égalité entre deux joueurs ou plus 
+                                            if ($posprec!=$moyenne) {
                                                 echo "<td class='text-center'>{$i}</td>";
+                                            }
+                                            else {
+                                                echo "<td class='text-center'>&nbsp;</td>";
+                                            }
                                                 echo "<td class='text-center'>";
                                                if ($evolution>0) {
                                                         echo "&nbsp;&nbsp;<span class='fa  fa-caret-up medium vert'> +{$evolution}</span>";
@@ -82,6 +89,7 @@
                                                 echo "<td class='text-center hidden-xs hidden-sm'>{$posRisque}</td>";
                                             echo "</tr>";
                                             $i=$i+1;
+                                            $posprec=$moyenne;
                                         }                                           
                                         ?>
                                     </tbody>
