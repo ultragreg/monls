@@ -12,10 +12,10 @@ class Database{
     public function __construct(){
         $url_du_site = $_SERVER['SERVER_NAME'];
           // Connexion : Serveur, User, Password, BD
-          $this->host="127.0.0.1";
-          $this->username="xxxx";
-          $this->password="yyyy";
-          $this->db_name="zzzz";
+          $this->host= getenv('DB_HOSTNAME');
+          $this->username = getenv('DB_USERNAME');
+          $this->password= getenv('DB_PASSWORD');
+          $this->db_name= getenv('DB_NAME');
 
 
     }
