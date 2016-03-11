@@ -1,0 +1,6 @@
+php 1
+Redirect permanent / http://monls.tk/
+ErrorDocument 404 http://monls.free.fr
+Options -Indexes
+AddType x-mapp-php5 .php
+

@@ -1,0 +1,614 @@
+/* Style monLS V0.1 */
+
+*
+{
+	margin:0;
+	padding:0;
+}	
+/* Marge haut et bas à 10px, gauche et droite à 0 */
+/* padding à 0 pour le navigateur Opera */
+/* Le texte est centré et on définit la fonte générale ainsi que la couleur de fond */
+body
+{
+	margin: 10px 0;
+	text-align: center;
+	font: 0.8em "Trebuchet MS", helvetica, sans-serif;
+	background: #AAC2EC;
+}
+/* Le div conteneur a une lergeur de 750px, marge à 0 et le texte est aligné à gauche. */
+/* Ce div a une bordure de 2 px de couleur bleue et un fond blanc */
+div#conteneur
+{
+width: 90%;
+margin: 0 auto;
+text-align: left;
+border: 2px solid #2F74C3;
+background: #fff;
+}
+/* La hauteur est fixé à 250 px et le logo est affiché */
+h1#header
+{			
+height: 250px;
+background: url('../img/logo.jpg') no-repeat left top;
+}
+h1#header a
+{			
+width: 60%;
+height: 250px;		
+text-decoration: none;
+float: left;		
+}
+.jeubloque
+{
+background-color:#FF5F65;
+color : white;
+text-align: center !important;
+font-weight: bold;
+line-height: 4.7em !important;
+}
+
+#newssport, iframe
+{
+float: right;		
+}
+/* Astuce pour afficher une taille minimum pour les contenus de certaines pages (ex la page de connexion) */
+div#mini
+{
+height: 260px;
+display: block;
+}
+#groupeflash
+{
+margin: 20px 0 0 20px;
+border: 2px #1e458a solid; 
+background-color: #e5edfa; 
+padding: 10px; 
+olor: #002157; 
+font-size: inherit; 
+font-weight: inherit; 
+font-family: inherit; 
+font-style: inherit; text-decoration: inherit; -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px; -moz-box-shadow: 0px 0px 10px 0px #333333; -webkit-box-shadow: 0px 0px 10px 0px #333333; box-shadow: 0px 0px 10px 0px #333333;
+}
+#calendar
+{
+display:none;
+position:absolute;
+border-collapse:collapse;
+background:#FFFFFF;
+border:1px solid #ABABAB;
+}
+.titrecalendar
+{
+background:#ABABAB;
+font:12px Arial;
+text-align: center;
+}
+.imagecalendar
+{
+cursor:pointer;
+}
+.colonnecalendar
+{
+width:18px;
+height:18px;
+}
+/* ----------------- */
+/* Gestion des Menus */
+/* ----------------- */
+/* La hauteur du menu correspondant a la taille de l'image utilisée en fond */
+/* L'image de fond est décaler de 25 pixels vers le haut */
+ul#menu
+{
+height: 35px;
+background: url('../img/bg_menu.png') repeat-x 0 -25px;
+list-style-type: none;
+}
+/* Les li sont flottant,les puces sont cachées, et le texte centré */
+ul#menu li
+{
+float: left;
+text-align: center;
+}
+
+ul#menu li a.item, ul#menu li span.item {
+    width: 145px;
+}
+
+ul#menu li a.home {
+    margin-left: 5px;
+    width: 30px;
+    background: url('../img/home.png') no-repeat;
+}
+
+/* La largeur, hauteur de ligne, taille de police, graisse de police, espacement des lettres, */
+/* couleur, bordure et decoration du texte. */
+ul#menu li a.home, ul#menu li a.item, ul#menu li span.item
+{
+height: 25px;
+line-height: 25px;
+font-size: 1.2em;
+font-weight: bold;
+letter-spacing: 2px;
+display: block;
+text-decoration: none;
+border-right: 2px solid #dea;
+color:white;
+}
+ul#menu li a.active
+{
+color: #F2F2FF;
+}
+/* L'image de fond au passage de la souris est décalé */
+ul#menu li a.active:hover
+{
+background: url('../img/bg_menu.png') repeat-x 0 0;
+color: #31329F;
+}
+ul#menu li span.inactive
+{
+background:#9FA0FF;
+color: black;
+font-style: italic;
+}
+/* titre à gauche et un padding de 30 px à droite */
+div#contenu
+{
+min-height: 265px;
+padding: 0 30px 0 90px;
+background: url('../img/titre.jpg') no-repeat 15px 15px;
+}
+/* Les titres ont une couleur bleue, une marge à gauche de 25 px, une taille + grande */
+div#contenu h2
+{
+padding-left: 25px;
+line-height: 25px;
+font-size: 1.4em;
+background: url('../img/puce.png') no-repeat left bottom ;
+color: #2F74C3;
+border-bottom: 1px solid #2F74C3;
+margin-bottom: 15px;
+margin-top: 45px;
+}
+/* Pareil pour h3 que pour h2 sauf qu'on n'affiche pas d'image */
+div#contenu h3
+{
+margin-left: 15px;
+padding-left: 5px;
+border-bottom: 1px solid #2F74C3;
+border-left: 3px solid #2F74C3;
+color: #2F74C3;
+margin-top: 25px;
+margin-bottom: 15px;
+}
+/* Pareil pour h4 que pour h3 sauf qu'on n'affiche pas d'image */
+div#contenu h4
+{
+margin-left: 15px;
+padding-left: 5px;
+color: #2F74C3;
+margin-top: 25px;
+margin-bottom: 15px;
+}
+/* Les paragraphes sont justifié et ont une hauteur de ligne supérieure à l'état normal */
+div#contenu p
+{
+text-align: justify;
+text-indent: 2em;
+line-height: 1.7em;
+margin-bottom: 20px;
+}
+h5
+{
+margin-top: 30px;
+margin-left: 20px;
+color: #6F2229;
+font-weight: bold;
+}
+h6, h7 {
+    color: #2F74C3;
+    margin-bottom: 5px;
+    margin-left: 15px;
+    margin-top: 5px;
+    padding-left: 5px;    
+}
+h6 {
+    font-size: 1.1em;
+}
+h7 {
+    display: inline-block;
+    font-size: 1em;
+    width: 110px;
+}
+table.jeu 
+{
+background-color:#FFFFFF;
+padding:0;
+margin:10px 0 0 20px;
+border-collapse: collapse;
+font-style: italic;
+}
+table.jeu .impaire
+{
+background-color: #DFF4FF;
+}
+
+.evol
+{
+    font-size: 0.8em;
+}
+
+
+
+/* Les noms des équipes qui recoivent sont calés à droites */
+table.jeu tr td.droite
+{
+    padding: 0 5px 0 0;
+    text-align: right;
+}  
+table.jeu tr td.centre
+{
+    text-align: center;
+}    
+table.jeu tr td.eqd
+{
+text-align: right;
+width: 130px;
+padding-right: 10px;
+}
+table.jeu tr td.statd
+{
+text-align: left;
+width: 180px;       
+padding-left:10px;
+}
+/* Les noms des visiteurs sont calés à gauches */
+table.jeu tr td.eqg
+{
+text-align: left;
+width: 130px;
+padding-left:10px;
+}
+table.jeu tr td.statg
+{
+text-align: left;
+width: 180px;
+}
+/* Les noms des visiteurs sont calés à gauches */
+table.jeu img
+{
+border: none;
+margin:4px 0 0 4px;
+}
+/* Les images des choix (1,n,2) ont une taille de 17px */
+.choix1, .choixn, .choix2, .choixs, .resultat1, .resultatn, .resultat2, .resultats
+{
+width: 19px;
+}
+table.jeu td.choix
+{
+width: 20px;
+}
+/* Gestion des images des choix */
+table.jeu .choix1
+{
+background: url('../img/s1.png') no-repeat 0px 0px;
+}
+table.jeu .choixn
+{
+background: url('../img/sn.png') no-repeat 0px 0px;
+}
+table.jeu .choix2
+{
+background: url('../img/s2.png') no-repeat 0px 0px;
+}
+table.jeu .choixs
+{
+background: url('../img/ss.png') no-repeat 0px 0px;
+}
+table.jeu .resultat1
+{
+background: url('../img/r1.png') no-repeat 0px 0px;
+}
+table.jeu .resultatn
+{
+background: url('../img/rn.png') no-repeat 0px 0px;
+}
+table.jeu .resultat2
+{
+background: url('../img/r2.png') no-repeat 0px 0px;
+}
+table.jeu .resultats
+{
+background: url('../img/rs.png') no-repeat 0px 0px;
+}
+table.jeu .choix1:hover, table.jeu .choixn:hover, table.jeu .choix2:hover, table.jeu .choixs:hover
+{
+background-position: -19px 0px;
+}
+table.jeu .resultat1:hover, table.jeu .resultatn:hover,table.jeu .resultat2:hover,table.jeu .resultats:hover
+{
+background-position: -19px 0px;
+}
+table.jeu span.choix1, table.jeu span.choixn, table.jeu span.choix2, table.jeu span.choixs 
+{
+  display:block;
+	height: 22px;
+}
+table.jeu span.resultat1, table.jeu span.resultatn, table.jeu span.resultat2, table.jeu span.resultats 
+{
+  display:block;
+	height: 22px;
+}
+/* Les colonnes info, infotitre et infobas sont celles du tableau récapitulatif de la page d'accueil */
+table.jeu td.info
+{
+width: 32px;
+text-align: center;
+border: 1px solid #336699;
+color:#336699;
+height: 25px;
+}
+/* Le jeu pronostiqué est le bon résultat; on affiche donc la zone en gras ! */
+
+table.jeu td.infotitre
+{
+width: 32px;
+height: 25px;
+text-align: center;
+border: 1px solid #336699;
+}
+
+table.jeu td.infojeu
+{
+height: 25px;
+text-align: center;
+border: 1px solid #336699;
+}
+
+table.jeu td.infotitre2
+{
+width: 32px;
+text-align: center;
+border: 2px solid #336699;
+background-color:#FF6B76;
+color:white;
+}
+
+table.jeu td.gain {
+    background: none repeat scroll 0 0 #F0E4F7 !important;
+    border: 2px solid #8B27C1 !important;
+    color: #A34B7E  !important;
+}
+table.jeu td.meilleur
+{
+/*background-color:#BBFF99;*/
+color : #00B713;
+font-weight: bold;
+}
+table.jeu td.mauvais
+{
+/*background-color:#FF5F65;*/
+color : red;
+font-weight: bold;
+}
+table.jeu td.flash
+{
+background-color:#EABEBE;
+}
+table.jeu td.infobas
+{
+width: 20px;
+text-align: center;
+border-left: 1px solid #336699;
+border-right: 1px solid #336699;
+border-bottom: 1px solid #336699;
+color:#336699;
+}
+a.miniAction
+{
+background: url('../img/pucebleue.png') no-repeat 3px 3px;
+padding-left: 16px;
+margin-right: 10px;
+margin-left: 12px;
+display: inline;
+font-style: normal;
+font-variant: normal;
+font-weight: bold;
+font-size: 15px;
+line-height: normal;
+font-size-adjust: none;
+font-stretch: normal;
+color: #045E9C;
+text-transform: UpperCase;
+}
+
+/* Répartition */
+	#repartition .pourcent_vert, #repartition .pourcent_jaune, #repartition .pourcent_rouge, #repartition .pourcent_gris { /*cas grands % avec les chiffres*/
+	line-height:1.8em;
+	height:1.8em;
+	display:block;
+	padding: 0 5px;
+	color:#fff;
+	text-align: right;
+	cursor: default;
+	font-size:85%;
+	}
+	
+	#repartition .pourcent_vert, #repartition .pourcent_jaune, #repartition .pourcent_rouge {
+	font-weight:bold;
+	}
+	
+	#repartition .pourcent_vert {
+	background:#70a745;
+	}
+	#repartition .pourcent_jaune {
+	background:#e4b704;
+	}
+	#repartition .pourcent_rouge {
+	background:#cb281c;
+	}
+	#repartition .pourcent_gris {
+	background:#c1c0c0;  
+	}
+	
+	#repartition .chiffre_ok, #repartition .chiffre_ko {
+	font-size:85%;
+	padding-left:2px;
+	}
+	
+	#repartition .chiffre_ok {
+	color:#444;
+	font-weight:bold;
+	}
+	
+	#repartition .chiffre_ko {
+	color:#605f5f;
+	}
+	
+	#repartition td.total {
+	height:10px;
+	}
+	
+/* Gestion des boutons des formulaires */
+
+form.formconnexion 
+{
+margin-left: 30px;
+}
+table tbody tr td label {
+    display: block;
+    height: 25px;
+    width: 110px;
+}
+form.formconnexion input, form.formconnexion select
+{
+margin-bottom:10px;
+background: #DFF4FF;
+color : blue;
+}
+input.bouton, input.boutonvalider
+{
+border:1px outset blue;
+font-weight:bold;
+cursor:pointer;
+font-size:1.4em;
+background: #DFF4FF;
+height: 40px;
+width: 200px;
+margin:20px 0px 20px 250px;
+color: #336699;
+}
+input.boutonvalider 
+{
+margin:20px 0px 20px 50px;
+}
+select.selection 
+{
+border:2px outset blue;
+font-weight:bold;
+cursor:pointer;
+background: #DFF4FF;
+width: 100px;
+height: 22px;
+color: #336699;
+}
+div.monform
+{
+border: 1px solid blue;
+display: inline;
+}
+label.texte
+{
+background: url('../img/pucebleue.png') no-repeat 3px 3px;
+padding-left: 16px;
+margin-right: 10px;
+margin-left: 12px;
+display: inline;
+font-style: normal;
+font-variant: normal;
+font-weight: bold;
+font-size: 12px;
+line-height: normal;
+font-size-adjust: none;
+font-stretch: normal;
+color: #045E9C;
+text-transform: UpperCase;
+}
+
+/* Le Pied de page est avec une marge haute, aligné à droite */
+p#footer
+{
+margin: 50px 0 0 0;
+padding-right: 10px;
+line-height: 30px;
+text-align: right;
+color: #0246DA;
+}
+div.menu span.accueilutilisateur
+{
+font-size: 14px;
+font-weight: bold;
+margin-left: 3px;
+padding-left: 23px;
+color: #7B1E29;
+background: url('../img/flecheutilisateur.jpg') no-repeat 6px 3px;
+}
+div.menu span.connexionutilisateur
+{
+font-size: 10px;
+font-weight: bold;
+color: #7B1E29;
+}
+table.jeu td.jeutrouve
+{
+/*background-color:#BBFF99;*/
+color : #00B713;
+font-weight: bold;
+text-decoration: underline;
+}
+img.G_Classement
+{
+margin-top: 20px;
+margin-left: 20px;
+}
+table.jeu tr.enreg:hover
+{
+background-color: #B5D4DF;
+}
+a.navigation
+{
+float:right;
+font-weight: bold;
+font-size: 0.8em;
+color: #2F74C3;
+}
+table.jeu tr td.pronostic
+{
+font-weight: bold;
+}
+
+
+div.spoiler {
+    padding: 20px 10px 10px 10px;
+    width: 100%;
+    border: 1px solid black;
+    position: relative;
+}
+ 
+div.spoiler input.boutonAfficher, div.spoiler input.boutonMasquer {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+}
+ 
+div.spoiler[data-isOuvert="false"] div.contenuSpoiler {
+    display: none;
+}
+ 
+div.spoiler[data-isOuvert="false"] input.boutonMasquer {
+    display: none;
+}
+ 
+div.spoiler[data-isOuvert="true"] input.boutonAfficher {
+    display: none;
+}

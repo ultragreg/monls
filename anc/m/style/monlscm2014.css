@@ -1,0 +1,149 @@
+/* Style monLS version mobile V0.1 */
+* {margin:0;padding:0;}	
+/*body{margin: 10px 0;font: 0.8em "Trebuchet MS", helvetica, sans-serif;} 
+.compteur{font-size:11px;font-weight:bold;margin-top:-0.9em;padding:0.2em 0.5em;position:absolute;right:2px;top:50%;}
+
+.resok{background: -moz-linear-gradient(center top , #C1FFAF, #CDFFA3) repeat scroll 0 0 #CDFFA3;border: 1px solid #267F00;color: #333333;text-shadow: 0 1px 0 #FFFFFF;}
+.respb{background: -moz-linear-gradient(center top , #FFD5CE, #FF7F87) repeat scroll 0 0 #FF7F87;border: 1px solid #9B231F;color: #333333;text-shadow: 0 1px 0 #FFFFFF;}
+#divProchainJeu { margin:0; }
+#divSaisieResultats { margin:0; }
+#divProchainJeu .ui-btn {padding: 1px !important; }
+#divSaisieResultats .ui-btn {padding: 1px !important; }
+#divSaisieResultats .ui-btn-inner {font-size: 10px; width: 2em !important; padding:1px !important;}
+#divSaisieResultats .ui-corner-left, #divSaisieResultats .ui-corner-right 
+{font-size: 11px; width: 11em !important; padding: 1px !important; }
+*/
+/*
+.ui-controlgroup, fieldset.ui-controlgroup { margin: 0.1em; padding: 0; }
+.ui-header  {margin-top:10px !important; }   
+.ui-bar-d, .ui-page-theme-d, .ui-bar-d .ui-bar-inherit, html .ui-body-d .ui-bar-inherit, html body .ui-group-theme-d .ui-bar-inherit {
+    background-color: #1D1D1D;
+    border-color: #1B1B1B;
+    color: #FFFFFF;
+    font-weight: 700;
+    text-shadow: 0 1px 0 #111111;
+}
+*/
+html.ui-mobile body.ui-mobile-viewport div#pageAccueil.ui-page div.ui-content div#contenu div.ui-collapsible-set div.ui-collapsible div.ui-collapsible-content
+{
+    color:blue !important;
+}
+body div{background-color: #FEF746 !important;
+    text-shadow: none !important;}
+ul li a,div#contenu h3 a {background-color: #002776!important; color:white !important;text-shadow: none !important;}
+.rflash1  {
+    background: linear-gradient(#A01616, #BA0B0B) repeat scroll 0 0 #BA0B0B !important;
+    border: 1px solid #472D2D !important;
+    text-shadow: none !important;
+}
+html.ui-mobile body.ui-mobile-viewport div#pageConnexion.ui-page div.ui-dialog-contain div.ui-content div.ui-field-contain label,
+html.ui-mobile body.ui-mobile-viewport div#pageConnexion.ui-page div.ui-dialog-contain div.ui-content div.ui-field-contain div.ui-input-text input#loginConnexion,
+html.ui-mobile body.ui-mobile-viewport div#pageConnexion.ui-page div.ui-dialog-contain div.ui-content div.ui-field-contain div.ui-input-text input#motDePasseConnexion {
+    color:blue;
+}
+.ui-page div.ui-footer .ui-link,
+html.ui-mobile body.ui-mobile-viewport div.ui-page div.ui-header a.ui-link,
+html.ui-mobile body.ui-mobile-viewport div.ui-page div.ui-content a#boutonValideProno.ui-link,
+html.ui-mobile body.ui-mobile-viewport div.ui-page div.ui-content a#boutonValideResultats.ui-link {
+    background-color: #00923F !important;
+}
+html.ui-mobile body.ui-mobile-viewport div.ui-page div.ui-content a#boutonValideProno.ui-link,
+html.ui-mobile body.ui-mobile-viewport div.ui-page div.ui-content a#boutonValideResultats.ui-link {
+    color: white !important;
+    text-shadow: none !important;
+}
+
+.ui-icon-delete {
+    background-color: #00923F !important;
+}
+html.ui-mobile body.ui-mobile-viewport div.ui-page div.ui-header h1.ui-title {
+    color: #073082 !important;
+}
+html.ui-mobile body.ui-mobile-viewport div#pageConnexion.ui-page div.ui-dialog-contain div.ui-header h1.ui-title {
+    color:white !important;
+}
+html.ui-mobile body.ui-mobile-viewport div#pageConnexion.ui-page div.ui-dialog-contain div.ui-content div.ui-field-contain div.ui-checkbox label.ui-btn
+{
+    background-color: #FEF746 !important;
+}
+html.ui-mobile body.ui-mobile-viewport div#pageConnexion.ui-page div.ui-dialog-contain div.ui-content a#boutonConnexion.ui-link
+{
+    background-color: #FEF746 !important;
+    background: linear-gradient(#00923F, #00923F) repeat scroll 0 0 #00923F;
+    color:white;
+    text-shadow:none;
+}
+.jeubloque { padding:10px; background-color: #FF5F65; color: #FFFFFF; line-height: 4.7em !important; }
+.jeutrouve{color:#0A712D;font-weight: bold;text-decoration: underline;}
+.jeunontrouve{color:#E8223D;font-weight:100;}
+.jeunenattente{color:black;font-weight:100;}
+div#contenu h2 { 
+    background: url("../../img/pucecm2014.png") no-repeat scroll left bottom rgba(0, 0, 0, 0);
+    border-bottom: 1px solid #2F74C3;
+    color: #2F74C3;
+    font-size: 1.4em;
+    line-height: 25px;
+    margin-bottom: 20px;
+    margin-top: 45px;
+    min-height: 45px;
+    padding-left: 50px;
+    text-align: left;
+} }
+div#contenu h4 { margin-left: 15px; padding-left: 5px; color: #2F74C3; margin-top: 2px; margin-bottom: 1px; }
+div#contenu p { text-align: justify; line-height: 1.7em; margin-bottom: 7px; margin-left: 20px; }
+#divProchainJeu.ui-field-contain div.ui-checkbox, #divSaisieResultats.ui-field-contain div.ui-checkbox  { width: 33% !important; }
+#divProchainJeu.ui-field-contain  div.ui-controlgroup-controls, #divSaisieResultats.ui-field-contain  div.ui-controlgroup-controls 
+{ padding-bottom:2px;  }
+#divProchainJeu .ui-first-child, #divProchainJeu .ui-last-child, #divProchainJeu .centre,
+#divSaisieResultats .ui-first-child, #divSaisieResultats .ui-last-child, #divSaisieResultats .centre  
+{padding: 1px !important; text-align:center;vertical-align:middle;line-height:30px;height:30px;}
+#divProchainJeu .ui-field-contain > label ~ [class*="ui-"], .ui-field-contain .ui-controlgroup-controls,
+#divSaisieResultats .ui-field-contain > label ~ [class*="ui-"], .ui-field-contain .ui-controlgroup-controls {
+    -moz-box-sizing: border-box;
+    float: left;
+    width: 100%;
+}
+.ui-footer { text-align:center; }
+
+/* Lignes des listbox */
+.ui-body-c, .ui-bar-c {
+    background: linear-gradient(#FFAAAA, #FC9797) repeat scroll 0 0 #F25400;
+    border: 1px solid #456F9A !important;
+    color: #333333;
+    text-shadow: 0 0px 0 #FFFFFF;
+}
+.ui-body-d, .ui-bar-d {
+    background: linear-gradient(#002776, #2858B7) repeat scroll 0 0 #002776;
+    border: 1px solid #F7C942 !important;
+    color: white;
+    text-shadow: none;
+}
+.ui-body-e, .ui-overlay-e .ui-bar-e{
+    background-color: #002776 !important;
+    border: 1px solid #AAAAAA !important;
+    color: white;
+    text-shadow: none;
+}
+.ui-listview > .ui-li-has-icon > .ui-btn, .ui-listview > .ui-li-static.ui-li-has-icon {
+    background-color: #002776 !important;
+}
+/* Bulle d'information en bleue */
+.ui-li-count {
+    background: linear-gradient(#00923F, #35AD67) repeat scroll 0 0 #00923F;
+    border: 1px solid #044062;
+    color: #FFFFFF;
+    font-weight: bold;
+    text-shadow: none;
+}
+/* Bouton important comme la  connexion par exemple */
+.ui-btn-e {
+    background: linear-gradient(#FFEFAA, #FFE155) repeat scroll 0 0 #FADB4E;
+    border: 1px solid #F4C63F;
+    color: #222222;
+    font-weight: bold;
+    text-shadow: none;
+}
+.ui-body-a, .ui-page-theme-a .ui-body-inherit, html .ui-bar-a .ui-body-inherit, html .ui-body-a .ui-body-inherit, html body .ui-group-theme-a .ui-body-inherit, html .ui-panel-page-container-a {
+    color: white !important;
+    text-shadow: none !important;
+}

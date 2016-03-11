@@ -1,0 +1,148 @@
+{
+  "elements": [
+    {
+      "type": "bar_glass",
+      "colour": "#D080C0",
+      "values": [
+        45,
+        32.8,
+        47.2,
+        50.1,
+        38.6,
+        29.9,
+        48.4,
+        44.4,
+        37.6,
+        39.3,
+        40.4,
+        45.2,
+        35.3,
+        39.8,
+        38.9,
+        47.3,
+        47.3,
+        47,
+        45.5,
+        42.4,
+        47.6,
+        0,
+        0
+      ],
+      "text": "2011-12 J33",
+      "font-size": 10
+    },
+    {
+      "type": "bar_glass",
+      "colour": "#EF00FF",
+      "values": [
+        44.7,
+        32.7,
+        46.9,
+        49.9,
+        39,
+        29.9,
+        47.8,
+        44.6,
+        38.2,
+        39.4,
+        40.9,
+        44.3,
+        34.7,
+        40.3,
+        39.8,
+        47.4,
+        46.9,
+        46.8,
+        45.4,
+        41.5,
+        47.8,
+        0,
+        0
+      ],
+      "text": "2011-12 J37",
+      "font-size": 10
+    },
+    {
+      "type": "bar_glass",
+      "colour": "#F04040",
+      "values": [
+        44.4,
+        33.8,
+        46.6,
+        49.7,
+        38.3,
+        29.8,
+        48.5,
+        44.5,
+        37.5,
+        40.3,
+        40.2,
+        44.7,
+        34.9,
+        39.2,
+        39.5,
+        47.7,
+        46.4,
+        47.5,
+        44.9,
+        41.6,
+        45.9,
+        0,
+        0
+      ],
+      "text": "2011-12 J38",
+      "font-size": 10
+    }
+  ],
+  "tooltip": {
+    "shadow": true,
+    "stroke": 2,
+    "colour": "#6E604F",
+    "background": "#BDB396",
+    "title": "{font-size: 14px; color: #CC2A43;}",
+    "body": "{font-size: 10px; font-weight: bold; color: #000000;}"
+  },
+  "title": {
+    "text": "Evolution par joueur"
+  },
+  "y_axis": {
+    "min": 0,
+    "max": 81.4,
+    "steps": 5,
+    "stroke": 2,
+    "colour": "#d000d0"
+  },
+  "x_axis": {
+    "stroke": 2,
+    "tick-height": 2,
+    "colour": "#d000d0",
+    "labels": {
+      "labels": [
+        "Patrick F.",
+        "Philippe V.",
+        "Lionel C.",
+        "Christophe L.",
+        "Cyril K.",
+        "Marie-No C.-B.",
+        "Eric A.",
+        "Christophe D.",
+        "Christophe M.",
+        "Bruno T.",
+        "Fabien P.",
+        "Bernard A.",
+        "Therese S.",
+        "Florence R.",
+        "Cedric G.",
+        "Marc B.",
+        "Julien B.",
+        "Laurent B.",
+        "Jonathan F.",
+        "Philippe P",
+        "Pascal D.",
+        "Jean-Yves F.",
+        "Baptiste M."
+      ],
+      "rotate": 270
+    }
+  }
+}

@@ -1,0 +1,177 @@
+/* Style monLS version mobile V0.1 */
+* {margin:0;padding:0;}	
+/*body{margin: 10px 0;font: 0.8em "Trebuchet MS", helvetica, sans-serif;} 
+.compteur{font-size:11px;font-weight:bold;margin-top:-0.9em;padding:0.2em 0.5em;position:absolute;right:2px;top:50%;}
+
+.resok{background: -moz-linear-gradient(center top , #C1FFAF, #CDFFA3) repeat scroll 0 0 #CDFFA3;border: 1px solid #267F00;color: #333333;text-shadow: 0 1px 0 #FFFFFF;}
+.respb{background: -moz-linear-gradient(center top , #FFD5CE, #FF7F87) repeat scroll 0 0 #FF7F87;border: 1px solid #9B231F;color: #333333;text-shadow: 0 1px 0 #FFFFFF;}
+#divProchainJeu { margin:0; }
+#divSaisieResultats { margin:0; }
+#divProchainJeu .ui-btn {padding: 1px !important; }
+#divSaisieResultats .ui-btn {padding: 1px !important; }
+#divSaisieResultats .ui-btn-inner {font-size: 10px; width: 2em !important; padding:1px !important;}
+#divSaisieResultats .ui-corner-left, #divSaisieResultats .ui-corner-right 
+{font-size: 11px; width: 11em !important; padding: 1px !important; }
+*/
+/*
+.ui-controlgroup, fieldset.ui-controlgroup { margin: 0.1em; padding: 0; }
+.ui-header  {margin-top:10px !important; }   
+.ui-bar-d, .ui-page-theme-d, .ui-bar-d .ui-bar-inherit, html .ui-body-d .ui-bar-inherit, html body .ui-group-theme-d .ui-bar-inherit {
+    background-color: #1D1D1D;
+    border-color: #1B1B1B;
+    color: #FFFFFF;
+    font-weight: 700;
+    text-shadow: 0 1px 0 #111111;
+}
+*/
+
+.gagnant {
+    color : #8B27C1 !important;
+    background-color: #F0E4F7 !important;
+}
+.rflash1  {
+    background: linear-gradient(#A01616, #BA0B0B) repeat scroll 0 0 #BA0B0B !important;
+    border: 1px solid #472D2D !important;
+    text-shadow: 0 1px 1px #194B7E !important;
+}
+.jeubloque { padding:10px; background-color: #FF5F65; color: #FFFFFF; line-height: 4.7em !important; }
+.jeutrouve{color:#0A712D;font-weight: bold;text-decoration: underline;}
+.jeunontrouve{color:#E8223D;font-weight:100;}
+.jeunenattente{color:black;font-weight:100;}
+div#contenu h2 { padding-left:25px; line-height: 25px; font-size: 1.4em; background: url('../../img/puce.png') no-repeat left bottom ; color: #2F74C3; border-bottom: 1px solid #2F74C3; margin-bottom: 15px; margin-top: 45px; text-align:left; }
+div#contenu h3 { padding-left: 5px; color: #2F74C3; font-size: 1.4em; margin:0.2em; }
+div#contenu h4 { margin-left: 15px; padding-left: 5px; color: #2F74C3; margin-top: 2px; margin-bottom: 1px; }
+div#contenu p { text-align: justify; line-height: 1.7em; margin-bottom: 7px; margin-left: 20px; }
+#divProchainJeu.ui-field-contain div.ui-checkbox, #divSaisieResultats.ui-field-contain div.ui-checkbox  { width: 33% !important; }
+#divProchainJeu.ui-field-contain  div.ui-controlgroup-controls, #divSaisieResultats.ui-field-contain  div.ui-controlgroup-controls 
+{ padding-bottom:2px;  }
+#divProchainJeu .ui-first-child, #divProchainJeu .ui-last-child, #divProchainJeu .centre,
+#divSaisieResultats .ui-first-child, #divSaisieResultats .ui-last-child, #divSaisieResultats .centre  
+{padding: 1px !important; text-align:center;vertical-align:middle;line-height:30px;height:30px;}
+#divProchainJeu .ui-field-contain > label ~ [class*="ui-"], .ui-field-contain .ui-controlgroup-controls,
+#divSaisieResultats .ui-field-contain > label ~ [class*="ui-"], .ui-field-contain .ui-controlgroup-controls {
+    -moz-box-sizing: border-box;
+    float: left;
+    width: 100%;
+}
+.evolp
+{
+    font-size: 0.9em;
+    color: green;
+}
+.evoln
+{
+    font-size: 0.9em;
+    color: red;
+}
+
+.ui-footer { text-align:center; }
+
+/* Lignes des listbox */
+.ui-body-c, .ui-bar-c {
+    background: linear-gradient(#FFAAAA, #FC9797) repeat scroll 0 0 #F25400;
+    border: 1px solid #456F9A;
+    color: #333333;
+    text-shadow: 0 0px 0 #FFFFFF;
+}
+.ui-body-d, .ui-bar-d {
+background: rgba(168,208,245,1);
+background: -moz-linear-gradient(left, rgba(168,208,245,1) 0%, rgba(114,172,238,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(168,208,245,1)), color-stop(100%, rgba(114,172,238,1)));
+background: -webkit-linear-gradient(left, rgba(168,208,245,1) 0%, rgba(114,172,238,1) 100%);
+background: -o-linear-gradient(left, rgba(168,208,245,1) 0%, rgba(114,172,238,1) 100%);
+background: -ms-linear-gradient(left, rgba(168,208,245,1) 0%, rgba(114,172,238,1) 100%);
+background: linear-gradient(to right, rgba(168,208,245,1) 0%, rgba(114,172,238,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a8d0f5', endColorstr='#72acee', GradientType=1 );
+    border: 1px solid #F7C942;
+    color: white;
+    //text-shadow: 0 1px 0 #FFFFFF;
+}
+.ui-body-e, .ui-overlay-e {
+    background: linear-gradient(#F9F9F9, #EEEEEE) repeat scroll 0 0 #F9F9F9;
+    border: 1px solid #AAAAAA;
+    color: #333333;
+    text-shadow: 0 1px 0 #FFFFFF;
+}
+
+/* Bulle d'information en bleue */
+.ui-li-count {
+    background: linear-gradient(#5F9CC5, #396B9E) repeat scroll 0 0 #396B9E;
+    border: 1px solid #044062;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 11px;    
+    text-shadow: 0 1px 1px #194B7E;
+}
+/* Bouton important comme la  connexion par exemple */
+.ui-btn-e {
+    background: linear-gradient(#FFEFAA, #FFE155) repeat scroll 0 0 #FADB4E;
+    border: 1px solid #F4C63F;
+    color: #222222;
+    font-weight: bold;
+    text-shadow: 0 1px 0 #FFFFFF;
+}
+div#pageChat .ui-grid-a .ui-block-a { width: 78% }
+div#pageChat .ui-grid-a .ui-block-b { width: 15%; } 
+.chatDeconnecte {  color:orange  !important; }
+.chatConnecte   {  color:green  !important; }
+.chatErreur   {  color:red  !important; }
+div#pageChat.ui-page div.ui-content ul#chat_area.ui-listview li {
+padding: .2em 7em .2em .2em !important;
+font-size: 14px;
+}
+.ui-listview > .ui-li-static, .ui-listview > .ui-li-divider, .ui-listview > li > a.ui-btn {
+    white-space: normal !important;
+}
+#chat_area {
+overflow: hidden;    
+    } 
+
+
+#pageChat 
+{
+            position: absolute;
+            width: 100%;
+            top: 0;
+            bottom: 0;
+}
+ 
+#chatHeader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+  
+#chatFooter {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+ 
+#chatContent {
+            position: absolute;
+            top: 41px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+ 
+        .scrollable {
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+        }
+ 
+            /* iOS specific fix, don't use it on Android devices */
+        .scrollable > * {
+            -webkit-transform: translateZ(0px);
+        }
+
+        #chatSubmitForm {
+            margin: 8px 0px 0px 0px;            
+        }
+#chatSubmitForm > fieldset > div.ui-block-a > div, 
+#chatSendButton {
+    margin:0;
+}

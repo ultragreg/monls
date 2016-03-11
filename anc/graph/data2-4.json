@@ -1,0 +1,148 @@
+{
+  "elements": [
+    {
+      "type": "bar_glass",
+      "colour": "#D080C0",
+      "values": [
+        45,
+        37.5,
+        47.7,
+        55,
+        40.3,
+        37.4,
+        46.9,
+        46.9,
+        44.7,
+        46.5,
+        48.1,
+        44.6,
+        39.4,
+        42.5,
+        38.8,
+        51.1,
+        48.7,
+        46.4,
+        40,
+        0,
+        0,
+        0,
+        0
+      ],
+      "text": "LS0910-36",
+      "font-size": 10
+    },
+    {
+      "type": "bar_glass",
+      "colour": "#EF00FF",
+      "values": [
+        45.5,
+        36.4,
+        47.2,
+        54.8,
+        41.6,
+        38.3,
+        47,
+        47,
+        44.7,
+        47,
+        48.4,
+        44.5,
+        39.5,
+        42.2,
+        39.7,
+        50.9,
+        49.3,
+        47.1,
+        38.1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "text": "LS0910-37",
+      "font-size": 10
+    },
+    {
+      "type": "bar_glass",
+      "colour": "#F04040",
+      "values": [
+        45.8,
+        36.2,
+        47.1,
+        55.1,
+        41.8,
+        39.2,
+        46.9,
+        47.2,
+        45.2,
+        45.7,
+        48.4,
+        43.7,
+        40,
+        42.2,
+        40.9,
+        50.9,
+        49.1,
+        46.6,
+        36.8,
+        0,
+        0,
+        0,
+        0
+      ],
+      "text": "LS0910-38",
+      "font-size": 10
+    }
+  ],
+  "tooltip": {
+    "shadow": true,
+    "stroke": 2,
+    "colour": "#6E604F",
+    "background": "#BDB396",
+    "title": "{font-size: 14px; color: #CC2A43;}",
+    "body": "{font-size: 10px; font-weight: bold; color: #000000;}"
+  },
+  "title": {
+    "text": "Evolution par joueur"
+  },
+  "y_axis": {
+    "min": 0,
+    "max": 81.4,
+    "steps": 5,
+    "stroke": 2,
+    "colour": "#d000d0"
+  },
+  "x_axis": {
+    "stroke": 2,
+    "tick-height": 2,
+    "colour": "#d000d0",
+    "labels": {
+      "labels": [
+        "Patrick F.",
+        "Philippe V.",
+        "Lionel C.",
+        "Christophe L.",
+        "Cyril K.",
+        "Marie-No C.-B.",
+        "Eric A.",
+        "Christophe D.",
+        "Christophe M.",
+        "Bruno T.",
+        "Fabien P.",
+        "Bernard A.",
+        "Therese S.",
+        "Florence R.",
+        "Cedric G.",
+        "Marc B.",
+        "Julien B.",
+        "Laurent B.",
+        "Jonathan F.",
+        "Philippe P",
+        "Pascal D.",
+        "Jean-Yves F.",
+        "Baptiste M."
+      ],
+      "rotate": 270
+    }
+  }
+}

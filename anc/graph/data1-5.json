@@ -1,0 +1,355 @@
+{
+  "elements": [
+    {
+      "type": "line",
+      "values": [
+        28.6
+      ],
+      "dot-style": {
+        "type": "dot",
+        "tip": "Patrick F.<br>Jeu:#x_label#<br>Moy. #val#"
+      },
+      "width": 1,
+      "colour": "#D080C0",
+      "text": "Patrick F.",
+      "font-size": 10
+    },
+    {
+      "type": "line",
+      "values": [
+        71.4
+      ],
+      "dot-style": {
+        "type": "dot",
+        "tip": "Philippe V.<br>Jeu:#x_label#<br>Moy. #val#"
+      },
+      "width": 1,
+      "colour": "#EF00FF",
+      "text": "Philippe V.",
+      "font-size": 10
+    },
+    {
+      "type": "line",
+      "values": [
+        26.7
+      ],
+      "dot-style": {
+        "type": "dot",
+        "tip": "Lionel C.<br>Jeu:#x_label#<br>Moy. #val#"
+      },
+      "width": 1,
+      "colour": "#F04040",
+      "text": "Lionel C.",
+      "font-size": 10
+    },
+    {
+      "type": "line",
+      "values": [
+        33.3
+      ],
+      "dot-style": {
+        "type": "dot",
+        "tip": "Christophe L.<br>Jeu:#x_label#<br>Moy. #val#"
+      },
+      "width": 1,
+      "colour": "#008080",
+      "text": "Christophe L.",
+      "font-size": 10
+    },
+    {
+      "type": "line",
+      "values": [
+        46.7
+      ],
+      "dot-style": {
+        "type": "dot",
+        "tip": "Cyril K.<br>Jeu:#x_label#<br>Moy. #val#"
+      },
+      "width": 1,
+      "colour": "#104080",
+      "text": "Cyril K.",
+      "font-size": 10
+    },
+    {
+      "type": "line",
+      "values": [
+        28.6
+      ],
+      "dot-style": {
+        "type": "dot",
+        "tip": "Marie-No C.-B.<br>Jeu:#x_label#<br>Moy. #val#"
+      },
+      "width": 1,
+      "colour": "#2F8080",
+      "text": "Marie-No C.-B.",
+      "font-size": 10
+    },
+    {
+      "type": "line",
+      "values": [
+        40
+      ],
+      "dot-style": {
+        "type": "dot",
+        "tip": "Eric A.<br>Jeu:#x_label#<br>Moy. #val#"
+      },
+      "width": 1,
+      "colour": "#30FF80",
+      "text": "Eric A.",
+      "font-size": 10
+    },
+    {
+      "type": "line",
+      "values": [
+        53.3
+      ],
+      "dot-style": {
+        "type": "dot",
+        "tip": "Christophe D.<br>Jeu:#x_label#<br>Moy. #val#"
+      },
+      "width": 1,
+      "colour": "#4080FF",
+      "text": "Christophe D.",
+      "font-size": 10
+    },
+    {
+      "type": "line",
+      "values": [
+        60
+      ],
+      "dot-style": {
+        "type": "dot",
+        "tip": "Christophe M.<br>Jeu:#x_label#<br>Moy. #val#"
+      },
+      "width": 1,
+      "colour": "#5F80C0",
+      "text": "Christophe M.",
+      "font-size": 10
+    },
+    {
+      "type": "line",
+      "values": [
+        60
+      ],
+      "dot-style": {
+        "type": "dot",
+        "tip": "Bruno T.<br>Jeu:#x_label#<br>Moy. #val#"
+      },
+      "width": 1,
+      "colour": "#6F0000",
+      "text": "Bruno T.",
+      "font-size": 10
+    },
+    {
+      "type": "line",
+      "values": [
+        14.3
+      ],
+      "dot-style": {
+        "type": "dot",
+        "tip": "Fabien P.<br>Jeu:#x_label#<br>Moy. #val#"
+      },
+      "width": 1,
+      "colour": "#7080FF",
+      "text": "Fabien P.",
+      "font-size": 10
+    },
+    {
+      "type": "line",
+      "values": [
+        42.9
+      ],
+      "dot-style": {
+        "type": "dot",
+        "tip": "Bernard A.<br>Jeu:#x_label#<br>Moy. #val#"
+      },
+      "width": 1,
+      "colour": "#800040",
+      "text": "Bernard A.",
+      "font-size": 10
+    },
+    {
+      "type": "line",
+      "values": [
+        42.9
+      ],
+      "dot-style": {
+        "type": "dot",
+        "tip": "Therese S.<br>Jeu:#x_label#<br>Moy. #val#"
+      },
+      "width": 1,
+      "colour": "#9F0080",
+      "text": "Therese S.",
+      "font-size": 10
+    },
+    {
+      "type": "line",
+      "values": [
+        14.3
+      ],
+      "dot-style": {
+        "type": "dot",
+        "tip": "Florence R.<br>Jeu:#x_label#<br>Moy. #val#"
+      },
+      "width": 1,
+      "colour": "#A04000",
+      "text": "Florence R.",
+      "font-size": 10
+    },
+    {
+      "type": "line",
+      "values": [
+        57.1
+      ],
+      "dot-style": {
+        "type": "dot",
+        "tip": "Cedric G.<br>Jeu:#x_label#<br>Moy. #val#"
+      },
+      "width": 1,
+      "colour": "#BF8000",
+      "text": "Cedric G.",
+      "font-size": 10
+    },
+    {
+      "type": "line",
+      "values": [
+        28.6
+      ],
+      "dot-style": {
+        "type": "dot",
+        "tip": "Marc B.<br>Jeu:#x_label#<br>Moy. #val#"
+      },
+      "width": 1,
+      "colour": "#C08000",
+      "text": "Marc B.",
+      "font-size": 10
+    },
+    {
+      "type": "line",
+      "values": [
+        46.7
+      ],
+      "dot-style": {
+        "type": "dot",
+        "tip": "Julien B.<br>Jeu:#x_label#<br>Moy. #val#"
+      },
+      "width": 1,
+      "colour": "#0A00FF",
+      "text": "Julien B.",
+      "font-size": 10
+    },
+    {
+      "type": "line",
+      "values": [
+        33.3
+      ],
+      "dot-style": {
+        "type": "dot",
+        "tip": "Laurent B.<br>Jeu:#x_label#<br>Moy. #val#"
+      },
+      "width": 1,
+      "colour": "#1A0040",
+      "text": "Laurent B.",
+      "font-size": 10
+    },
+    {
+      "type": "line",
+      "values": [
+        40
+      ],
+      "dot-style": {
+        "type": "dot",
+        "tip": "Jonathan F.<br>Jeu:#x_label#<br>Moy. #val#"
+      },
+      "width": 1,
+      "colour": "#2A0080",
+      "text": "Jonathan F.",
+      "font-size": 10
+    },
+    {
+      "type": "line",
+      "values": [
+        0
+      ],
+      "dot-style": {
+        "type": "dot",
+        "tip": "Philippe P<br>Jeu:#x_label#<br>Moy. #val#"
+      },
+      "width": 1,
+      "colour": "#3A00FF",
+      "text": "Philippe P",
+      "font-size": 10
+    },
+    {
+      "type": "line",
+      "values": [
+        0
+      ],
+      "dot-style": {
+        "type": "dot",
+        "tip": "Pascal D.<br>Jeu:#x_label#<br>Moy. #val#"
+      },
+      "width": 1,
+      "colour": "#4A0000",
+      "text": "Pascal D.",
+      "font-size": 10
+    },
+    {
+      "type": "line",
+      "values": [
+        0
+      ],
+      "dot-style": {
+        "type": "dot",
+        "tip": "Jean-Yves F.<br>Jeu:#x_label#<br>Moy. #val#"
+      },
+      "width": 1,
+      "colour": "#5A4000",
+      "text": "Jean-Yves F.",
+      "font-size": 10
+    },
+    {
+      "type": "line",
+      "values": [
+        0
+      ],
+      "dot-style": {
+        "type": "dot",
+        "tip": "Baptiste M.<br>Jeu:#x_label#<br>Moy. #val#"
+      },
+      "width": 1,
+      "colour": "#6A4000",
+      "text": "Baptiste M.",
+      "font-size": 10
+    }
+  ],
+  "title": {
+    "text": "Classement General"
+  },
+  "y_axis": {
+    "min": 0,
+    "max": 76.4,
+    "steps": 5,
+    "stroke": 2,
+    "colour": "#d000d0"
+  },
+  "x_axis": {
+    "stroke": 2,
+    "tick-height": 2,
+    "colour": "#d000d0",
+    "labels": {
+      "labels": [
+        "CM"
+      ],
+      "rotate": 270
+    }
+  },
+  "tooltip": {
+    "shadow": true,
+    "stroke": 2,
+    "colour": "#6E604F",
+    "background": "#BDB396",
+    "title": "{font-size: 14px; color: #CC2A43;}",
+    "body": "{font-size: 10px; font-weight: bold; color: #000000;}"
+  }
+}

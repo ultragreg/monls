@@ -1,0 +1,34 @@
+{
+  "elements": [
+    
+  ],
+  "tooltip": {
+    "shadow": true,
+    "stroke": 2,
+    "colour": "#6E604F",
+    "background": "#BDB396",
+    "title": "{font-size: 14px; color: #CC2A43;}",
+    "body": "{font-size: 10px; font-weight: bold; color: #000000;}"
+  },
+  "title": {
+    "text": "Evolution par joueur"
+  },
+  "y_axis": {
+    "min": 0,
+    "max": 81.4,
+    "steps": 5,
+    "stroke": 2,
+    "colour": "#d000d0"
+  },
+  "x_axis": {
+    "stroke": 2,
+    "tick-height": 2,
+    "colour": "#d000d0",
+    "labels": {
+      "labels": [
+        
+      ],
+      "rotate": 270
+    }
+  }
+}
