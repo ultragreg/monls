@@ -8,6 +8,9 @@ include_once 'config/util.php';
 
 isCookieOk();
 
+
+error_reporting(E_ERROR | E_PARSE);
+
 ?>
 
 
