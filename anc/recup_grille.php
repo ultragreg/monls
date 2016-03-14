@@ -60,7 +60,7 @@ if (!empty($fic))
 	// Liste des jeux
 	$i=0;
 	// on récupère toutes les grilles existantes qu'on ajoute une à une dans un tableau
-	foreach($fic->find('table[class*=next]') as $listeJeux) 
+	foreach($fic->find('table[class*=grilles]') as $listeJeux) 
 	{
 		//création d'un tableau contenant un jeu
 		$jeu = array();
@@ -129,14 +129,15 @@ if (!empty($fic))
 		$equipe2 = array();
 		$j=0;
 		//récupération de la liste des équipes domicile
-		foreach($listeJeux->find('td[class=equipe1]') as $equipe)
+		foreach($listeJeux->find('td[class*=home]') as $equipe)
 		{
 			$equipe1[$j]=$equipe->plaintext;
+			$equipe1[$j] = str_replace (" -", "" , $equipe1[$j] );
 			$j++;
 		}
 		$j=0;
 		//récupération de la liste des équipes extérieur
-		foreach($listeJeux->find('td[class=equipe2]') as $equipe)
+		foreach($listeJeux->find('td[class*=ext]') as $equipe)
 		{
 			$equipe2[$j]=$equipe->plaintext;
 			$j++;
