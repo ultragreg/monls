@@ -1467,8 +1467,8 @@ function setMiseAJourJoueur($joueur_id,$nom, $initiale,$pseudo, $mdp,$mail,$admi
     if($operation=="C")
     {
        	// Ajout de ce joueur
-    		$requete=	"insert into joueur ( nom, initiale, pseudo, mdp, mail, administrateur, actif) 
-                  values ('$nom', '$initiale', '$pseudo', '$mdp', '$mail', '$administrateur', '$actif')";
+    		$requete=	"insert into joueur ( nom, initiale, pseudo, mdp, mail, administrateur, actif, log_chat) 
+                  values ('$nom', '$initiale', '$pseudo', '$mdp', '$mail', '$administrateur', '$actif', 'O')";
     }
     else if ($operation=="M")
     {
