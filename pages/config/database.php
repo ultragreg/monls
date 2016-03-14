@@ -17,16 +17,16 @@ class Database{
           $this->password= getenv('DB_PASSWORD');
           $this->db_name= getenv('DB_NAME');
 
-
     }
  
 
     // get the database connection
     public function getConnection(){
         $this->conn = null;
+
         try{
             if ($this->host=="localhost") {
-                $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name . ";charset=utf-8", $this->username, $this->password, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+                $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name . ";charset=utf8", $this->username, $this->password, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
             }
             else {
                $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name . ";charset=utf8", $this->username, $this->password, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
@@ -35,7 +35,6 @@ class Database{
         }catch(PDOException $exception){
             echo "Connection error : " . $this->host . " : " . $exception->getMessage();
         }
- 
         return $this->conn;
     }
 
