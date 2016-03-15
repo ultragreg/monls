@@ -494,11 +494,11 @@
 		//récupération des répartitions des matchs des joueurs pronosoft
 		//if ($_SESSION['id_joueur'] == '26');
 		$url="http://www.pronosoft.com/fr/concours/repartition_lotofoot.php?id715=" . $idSite;
-		$fic = 0;
+		$fic = file_get_html($url, false);
 		$repartition=array();
 		$pourcentage=array();
 		
-		if ($fic==1 && $stat == 'O') 
+		if (!empty($fic) && $stat == 'O') 
 		{
 			
 			$i=0;
@@ -551,11 +551,15 @@
 				$jjid=$jj["joueur_id"];
 				if ($pronostic) {
 					$total = 0.00;
+					$totalJuste = 0.00;
 					$compteur = 0;
+					$compteurJuste = $ListeresultatOk[$ii];
+					
 					$j = 0;
 					for($i=1; $i <= $nbMatchsDeCeJeu ; $i++) 
 					{
 						$prono = getPronosticNumero($pronostic, $i);
+						
 						$pourcent=$pourcentage[$j];
 						$resultatJeu='';
 						if ($Resultat) {
@@ -565,37 +569,73 @@
 						if($resultatJeu == '1N2') {
 							$total = $total + 100;
 							$compteur++;
+							$totalJuste = $totalJuste + 100;
 						}
 						else {
 							if (is_int(strpos($prono,'1')) == TRUE) {
 								$total = $total + floatval(str_replace(',', '.',$pourcent['1']));
 								$compteur++;
+								if($resultatJeu == '1') {
+									$totalJuste = $totalJuste + floatval(str_replace(',', '.',$pourcent['1']));
+								}
+								else {
+									if ($resultatJeu == '2' || $resultatJeu == 'N') {
+										$totalJuste = $totalJuste + (100-floatval(str_replace(',', '.',$pourcent['1'])));
+									}
+								}
 							}
 							if (is_int(strpos($prono,'N')) == TRUE) {
 								$total = $total + floatval(str_replace(',', '.',$pourcent['N']));
 								$compteur++;
+								if($resultatJeu == 'N') {
+									$totalJuste = $totalJuste + floatval(str_replace(',', '.',$pourcent['N']));
+								}
+								else {
+									if ($resultatJeu == '2' || $resultatJeu == '1') {
+										$totalJuste = $totalJuste + (100-floatval(str_replace(',', '.',$pourcent['N'])));
+									}
+								}
 							}
 							if(is_int(strpos($prono,'2')) == TRUE) {
 								$total = $total + floatval(str_replace(',', '.',$pourcent['2']));
 								$compteur++;
+								if($resultatJeu == '2') {
+									$totalJuste = $totalJuste + floatval(str_replace(',', '.',$pourcent['2']));
+								}
+								else {
+									if ($resultatJeu == '1' || $resultatJeu == 'N') {
+										$totalJuste = $totalJuste + (100-floatval(str_replace(',', '.',$pourcent['2'])));
+									}
+								}
 							}
 						}
 						
 						$j++;
 					}
 					
+					//Calcul de l'indice de gain : On inverse le pourcentage, puis on le divise par 10, pour avoir un chiffre élévé pour un gain potentiel élevé.
 					$indice=1.23;
 					$indice=$total/$compteur;
 					$indice=(100-$indice)/10;
+					//Calcul de la moyenne des pourcentages de répartition où le prono est juste, sert ensuite au calcul du classement par rapport à la prise de risque
+					//$moyenneJuste=$totalJuste/$compteurJuste;
+					if ($Resultat) {
+						$moyenneJuste=$totalJuste/$compteur;
+						setMoyenneJuste($jeu_id,$jjid,$moyenneJuste);
+					}
+					
+					//Affichage de l'indice gain et stockage en base
 					if (($bloque==0) && ($invisible==1) && ($_SESSION['id_joueur']<>$jjid)) {
 						if ($compteur ==7)
 						{
 							echo "<td class='infotitre' bgcolor='#CEF6CE'>" . number_format($indice,2) . "<br>&nbsp;</td>";
 							setIndiceGainProno7($jeu_id,$jjid,$indice);
+							setIndiceGainProno15($jeu_id,$jjid,0);
 						}
 						else
 						{
 							echo "<td class='infotitre' bgcolor='#CEE3F6'>&nbsp;<br>" . number_format($indice,2) . "</td>";
+							setIndiceGainProno7($jeu_id,$jjid,0);
 							setIndiceGainProno15($jeu_id,$jjid,$indice);
 						}
 					}
@@ -605,10 +645,12 @@
 						{
 							echo "<td class='infotitre' bgcolor='#CEF6CE'><a href='estimation.php?idjeu=".$jeu_id."&idjoueur=".$jjid."'>" . number_format($indice,2) . "</a><br>&nbsp;</td>";
 							setIndiceGainProno7($jeu_id,$jjid,$indice);
+							setIndiceGainProno15($jeu_id,$jjid,0);
 						}
 						else
 						{
 							echo "<td class='infotitre' bgcolor='#CEE3F6'>&nbsp;<br><a href='estimation.php?idjeu=".$jeu_id."&idjoueur=".$jjid."'>" . number_format($indice,2) . "</a></td>";
+							setIndiceGainProno7($jeu_id,$jjid,0);
 							setIndiceGainProno15($jeu_id,$jjid,$indice);
 						}
 					}
