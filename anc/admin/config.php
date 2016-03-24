@@ -1,12 +1,54 @@
 <?php
 
 $url_du_site = $_SERVER['SERVER_NAME'];
+$hostname = $_SERVER['SERVER_NAME'];
+if ($url_du_site == "monls.free.fr")
+{    
+  // Connexion : Serveur, User, Password, BD
+  $sql_serveur="localhost";
+  $sql_user="monls";
+  $sql_passwd="Van3iV0G";
+  $sql_bdd="monls";
 
-$sql_serveur=getenv('DB_HOSTNAME');
-$sql_user=getenv('DB_USERNAME');
-$sql_passwd=getenv('DB_PASSWORD');
-$sql_bdd=getenv('DB_NAME');
-      
+}
+elseif ($hostname == "monls.netai.net")
+{    
+  // Connexion : Serveur, User, Password, BD
+  $sql_serveur="mysql13.000webhost.com";
+  $sql_user="a8576257_monls";
+  $sql_passwd="pifpaf31";
+  $sql_bdd="a8576257_monls";
+}
+elseif ($hostname == "monls.olympe.in")
+{    
+  // Connexion : Serveur, User, Password, BD
+  $sql_serveur="sql2.olympe.in";
+  $sql_user="8mfumbzs";
+  $sql_passwd="terminator";
+  $sql_bdd="8mfumbzs";
+}
+elseif ($hostname == "monls.tk" || $hostname == "www.monls.tk")
+{    
+  // Connexion : Serveur, User, Password, BD
+  //error_reporting(0);
+  //$sql_serveur="mysql.hostinger.fr";
+  //$sql_user="u852679974_monls";
+  //$sql_passwd="terminator31";
+  //$sql_bdd="u852679974_monls";
+  $sql_serveur="sql2.olympe.in";
+  $sql_user="8mfumbzs";
+  $sql_passwd="terminator";
+  $sql_bdd="8mfumbzs";
+}
+else
+{ 
+  // Connexion : Serveur, User, Password, BD
+  $sql_serveur="127.0.0.1";
+  $sql_user="monls";
+  $sql_passwd="Van3iV0G";
+  $sql_bdd="monls";
+
+}            
 
 // Date et heure courantes, ne pas modifier
 $now=date("Y-m-d H:i:s");

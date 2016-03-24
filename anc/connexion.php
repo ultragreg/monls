@@ -50,8 +50,7 @@ ini_set('zlib.output_compression_level', 6);
               // Connexion automatique ?
               if (isset($_POST['auto']))
               {
-                  $sepCookie  = 'aicd45ez432dsf43d432';
-                  setcookie('monls',$joueur_id.$sepCookie.sha1($nom).$sepCookie.sha1($_SERVER['REMOTE_ADDR']), time() + 10*24*3600,'/');
+                  setcookie($nom_cookie,$joueur_id.$sepCookie.sha1($nom).$sepCookie.sha1($_SERVER['REMOTE_ADDR']), time() + 10*24*3600,'/');
               }
               // L'authentification de l'utilicateur a réussi ! 
               $authentification= true;

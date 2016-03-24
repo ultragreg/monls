@@ -210,6 +210,8 @@ ini_set('zlib.output_compression_level', 6);
 			//écriture du titre
 			// LCA echo '<h4>' . $jeu['titre'] . ' - ' . $jeu['comment'] .'</h4>';
 			// LCA $texte = '<h3>Jeu à 15</h3><p>Rapports officiels - MAJ le ' . date('j M Y à H:i:s') . '</p>';
+			echo '<h3>' . $jeu['titre'] . ' - ' . $jeu['comment'] .'</h3>';
+			echo '<p>Rapports officiels - MAJ le ' . date('j M Y à H:i:s') . '</p>';
 			//echo "<br>";
 			$rangs = $jeu['rangs'];
 			$gagnants = $jeu['gagnants'];
@@ -217,12 +219,12 @@ ini_set('zlib.output_compression_level', 6);
 			$j=0;
 			
 			//affichage du tableau
-			$texte_p = '<table class="jeu" id="tableauresultat">
-								<tr>
-									<td class="infotitre">Rang</td>
-									<td class="infotitre">Nombre de grille gagnantes</td>
-									<td class="infotitre">Rapports par grille gagnante</td>
-								</tr>';
+			//$texte_p = '<table class="jeu" id="tableauresultat">
+			//					<tr>
+			//						<td class="infotitre">Rang</td>
+			//						<td class="infotitre">Nombre de grille gagnantes</td>
+			//						<td class="infotitre">Rapports par grille gagnante</td>
+			//					</tr>';
 			// LCA echo $texte_p;
 			// LCA $texte = $texte . $texte_p;
 						
@@ -230,8 +232,8 @@ ini_set('zlib.output_compression_level', 6);
 			foreach($rangs as $index)
 			{
 				$k=$j+1;
-				if ($k%2) $texte_p = '<tr class=\'enreg paire\'>';
-				else $texte_p = '<tr class=\'enreg impaire\'>';
+				//if ($k%2) $texte_p = '<tr class=\'enreg paire\'>';
+				//else $texte_p = '<tr class=\'enreg impaire\'>';
 				
 				// LCA echo $texte_p;
 				// LCA $texte = $texte . $texte_p;
@@ -246,7 +248,7 @@ ini_set('zlib.output_compression_level', 6);
 				echo $texte_p;
 				$texte = $texte . $texte_p;
 				$texte_p =  'Rapport:[' . trim($rapports[$j]) . '].';
-				echo $texte_p;
+				echo $texte_p.'<br>';
 				$texte = $texte . $texte_p."\n";
 				
 				// echo $texte_p;
@@ -264,7 +266,7 @@ ini_set('zlib.output_compression_level', 6);
 			echo '<textarea name="rapports15" style="display:none;">'. $texte .'</textarea>';
 			echo '<input type="submit" value="Importer" class="bouton" /></form>';
 			
-			echo "<br><hr color='#2F74C3' size='1'>";
+			echo "<br><hr color='#2F74C3' size='1'><br><br>";
 					
 		}
 		

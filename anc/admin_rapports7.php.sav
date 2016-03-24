@@ -27,49 +27,6 @@ ini_set('zlib.output_compression_level', 6);
     $chaine7 = "";
     if (isset($_POST['rapports7']))
     {
-
-				$db_link = ouvre_base();
-				if ($db_link)
-				{
-			          $jeu        = getJeuCourant();
-			          $saison_id  = getIDSaisonCourante();
-			          if ($jeu) {
-
-			            $jeu_id     = $jeu["jeu_id"];
-			            // Suppression des statistiques
-					    $requete=	"delete from rapport where jeu_id='$jeu_id'";
-					    $result = mysql_query($requete);
-
-				    	echo "****************************************". $jeu_id . "<br>\n";
-				      $chaine7 = $_POST['rapports7'];
-				      $array = explode(PHP_EOL, $chaine7);
-				      foreach ($array as &$value) {
-				 	   	echo $value . "<br>\n";
-
-				 	   	$finRang = strpos ($value, ']Gagnant:[');
-				 	   	$rang= substr($value, 6, $finRang - 6);
-
-				 	   	$finGagnant = strpos ($value, ']Rapport:[');
-				 	   	$gagnant= substr($value, $finRang+10, $finGagnant - $finRang -10);
-
-				 	   	$finRapport = strpos ($value, '].');
-				 	   	$rapport= substr($value, $finGagnant+10, $finRapport - $finGagnant -10);
-				 	   	if (isset($rang) && $rang!=0) {
-							 $requete=	"insert into rapport (jeu_id, type, rang, nombre, rapport, commentaire) values ('$jeu_id', '7', '$rang', '$gagnant', '$rapport', now())";
-   							$result = mysql_query($requete);
-						}
-
-					  }
-		          }
-		              ferme_base($db_link);
-			}
-
-
-
-
-    	echo "****************************************". "<br>\n";
-
-    /*	
       $chaine7 = $_POST['rapports7'];
       $chaine7 = str_replace("\\","",$chaine7);
       $chaine7 = stripslashes($chaine7);
@@ -80,7 +37,6 @@ ini_set('zlib.output_compression_level', 6);
         fwrite($fd,$chaine7); 
         fclose($fd);
       }
-      */
     }
     else
     {
@@ -209,12 +165,9 @@ ini_set('zlib.output_compression_level', 6);
 		// Pour chaque jeu, on l'affiche à l'écran avec possibilité de le choisir
 		foreach($jeux as $jeu) 
 		{
-			$texte="";
 			//écriture du titre
-			// LCA echo '<h4>' . $jeu['titre'] . ' - ' . $jeu['comment'] .'</h4>';
-			// LCA $texte = '<h3>Jeu à 7</h3><p>Rapports officiels - MAJ le ' . date('j M Y à H:i:s') . '</p>';
-			echo '<h3>' . $jeu['titre'] . ' - ' . $jeu['comment'] .'</h3>';
-			echo '<p>Rapports officiels - MAJ le ' . date('j M Y à H:i:s') . '</p>';
+			echo '<h4>' . $jeu['titre'] . ' - ' . $jeu['comment'] .'</h4>';
+			$texte = '<h3>Jeu à 7</h3><p>Rapports officiels - MAJ le ' . date('j M Y à H:i:s') . '</p>';
 			//echo "<br>";
 			$rangs = $jeu['rangs'];
 			$gagnants = $jeu['gagnants'];
@@ -222,43 +175,36 @@ ini_set('zlib.output_compression_level', 6);
 			$j=0;
 			
 			//affichage du tableau
-			//$texte_p = '<table class="jeu" id="tableauresultat">
-			//					<tr>
-			//						<td class="infotitre">Rang</td>
-			//						<td class="infotitre">Nombre de grille gagnantes</td>
-			//						<td class="infotitre">Rapports par grille gagnante</td>
-			//					</tr>';
-			// LCA echo $texte_p;
-			// LCA $texte = $texte . $texte_p;
+			$texte_p = '<table class="jeu" id="tableauresultat">
+								<tr>
+									<td class="infotitre">Rang</td>
+									<td class="infotitre">Nombre de grille gagnantes</td>
+									<td class="infotitre">Rapports par grille gagnante</td>
+								</tr>';
+			echo $texte_p;
+			$texte = $texte . $texte_p;
 						
 			//parcours des rangs de la grille en cours
 			foreach($rangs as $index)
 			{
 				$k=$j+1;
-				//if ($k%2) $texte_p = '<tr class=\'enreg paire\'>';
-				//else $texte_p = '<tr class=\'enreg impaire\'>';
+				if ($k%2) $texte_p = '<tr class=\'enreg paire\'>';
+				else $texte_p = '<tr class=\'enreg impaire\'>';
 				
-				// LCA echo $texte_p;
-				// LCA $texte = $texte . $texte_p;
+				echo $texte_p;
+				$texte = $texte . $texte_p;
 				
 				//affichage du tableau
-				//$texte_p =  '<td align=center>' . $rangs[$j] . '</td><td class="eqd">' . $gagnants[$j] . '</td><td class="eqd">' . $rapports[$j] . '</td></tr>';
-				$texte_p =  'Rang:[' . $rangs[$j] . ']';
-				echo $texte_p;
-				$texte = $texte . $texte_p;
-				$texte_p =  'Gagnant:[' . $gagnants[$j] . ']';
-				echo $texte_p;
-				$texte = $texte . $texte_p;
-				$texte_p =  'Rapport:[' . trim($rapports[$j]) . '].';
-				echo $texte_p.'<br>';;
-				$texte = $texte . $texte_p."\n";
+				$texte_p =  '<td align=center>' . $rangs[$j] . '</td><td class="eqd">' . $gagnants[$j] . '</td><td class="eqd">' . $rapports[$j] . '</td></tr>';
 				
+				echo $texte_p;
+				$texte = $texte . $texte_p;
 				
 				$j++;
 			}
-			// LCA $texte_p =  "</table>";
-			// LCA echo $texte_p;
-			// LCA $texte = $texte . $texte_p;
+			$texte_p =  "</table>";
+			echo $texte_p;
+			$texte = $texte . $texte_p;
 			
 			
 			//formulaire caché pour sélection de la grille en cours à afficher
@@ -266,7 +212,7 @@ ini_set('zlib.output_compression_level', 6);
 			echo '<textarea name="rapports7" style="display:none;">'. $texte .'</textarea>';
 			echo '<input type="submit" value="Importer" class="bouton" /></form>';
 			
-			echo "<br><hr color='#2F74C3' size='1'><br><br>";
+			echo "<br><hr color='#2F74C3' size='1'>";
 					
 		}
 		

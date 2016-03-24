@@ -1130,7 +1130,10 @@ function getIdSiteJeu($jeu_id)
 function getNbMatchsDeCeJeu($jeu)
 {
    // Jeu à 14 ou 15 matchs ?
-  $nbMatchsDeCeJeu  = 14;
+  $nbMatchsDeCeJeu  = 7;
+  $equiped          = $jeu["equipe14d"];
+  $equipev          = $jeu["equipe14v"];
+  if ($equiped && $equipev)   $nbMatchsDeCeJeu  = 14;
   $equiped          = $jeu["equipe15d"];
   $equipev          = $jeu["equipe15v"];           
   if ($equiped && $equipev)   $nbMatchsDeCeJeu  = 15;
@@ -1467,8 +1470,9 @@ function setMiseAJourJoueur($joueur_id,$nom, $initiale,$pseudo, $mdp,$mail,$admi
     if($operation=="C")
     {
        	// Ajout de ce joueur
-    		$requete=	"insert into joueur ( nom, initiale, pseudo, mdp, mail, administrateur, actif, log_chat) 
+      $requete= "insert into joueur ( nom, initiale, pseudo, mdp, mail, administrateur, actif, log_chat)
                   values ('$nom', '$initiale', '$pseudo', '$mdp', '$mail', '$administrateur', '$actif', 'O')";
+
     }
     else if ($operation=="M")
     {
@@ -1620,6 +1624,60 @@ function getIndiceGainMoyenJoueurAF($saison_id,$joueur_id)
   // Requete pour retrouver tous les joueurs dans l'ordre d'insertion en base
  $sql = "SELECT joueur_id, format((sum(pronostic.IndiceGain15)+sum(pronostic.IndiceGain7))/(select count(*) from pronostic p left join jeu on p.jeu_id=jeu.jeu_id where joueur_id='$joueur_id' and jeu.saison_id='$saison_id'),2) 'moyenne'
  FROM pronostic left join jeu on pronostic.jeu_id=jeu.jeu_id where jeu.saison_id='$saison_id' and joueur_id='$joueur_id' ";
+  
+  $listes = array();
+  // Exécution de la requête 
+  if($result = mysql_query($sql))
+  {
+      // Lecture de ce jeu
+      $cpt=0;
+      while( $element = mysql_fetch_array($result) )
+      {
+          if ($element)
+          {
+            $listes[$cpt]=$element;
+            $cpt++;
+          } 
+      }
+      return $listes;
+  }
+  return "";
+}
+
+// récupère la répartition moyenne juste d'un joueur sur la saison donnée. (Hors Flash) 
+// A améliorer car devrait tenir compte du nombre de match juste
+function getMoyenneJusteJoueur($saison_id,$joueur_id)
+{
+  // Requete pour retrouver tous les joueurs dans l'ordre d'insertion en base
+ $sql = "SELECT joueur_id, format(sum(pronostic.MoyenneJuste)/(select count(*) from pronostic p left join jeu on p.jeu_id=jeu.jeu_id where p.MoyenneJuste is not null and p.flash = 0 and joueur_id='$joueur_id' and jeu.saison_id='$saison_id'),1) 'moyenneJuste'
+ FROM pronostic left join jeu on pronostic.jeu_id=jeu.jeu_id where jeu.saison_id='$saison_id' and joueur_id='$joueur_id'  and flash = 0 and pronostic.MoyenneJuste is not null";
+  
+  $listes = array();
+  // Exécution de la requête 
+  if($result = mysql_query($sql))
+  {
+      // Lecture de ce jeu
+      $cpt=0;
+      while( $element = mysql_fetch_array($result) )
+      {
+          if ($element)
+          {
+            $listes[$cpt]=$element;
+            $cpt++;
+          } 
+      }
+      return $listes;
+  }
+  return "";
+}
+
+// récupère la répartition moyenne juste d'un joueur sur la saison donnée. (Flash Compris) 
+// A améliorer car devrait tenir compte du nombre de match juste
+function getMoyenneJusteJoueurAF($saison_id,$joueur_id)
+{
+  // Requete pour retrouver tous les joueurs dans l'ordre d'insertion en base
+ $sql = "SELECT joueur_id, format(sum(pronostic.MoyenneJuste)/(select count(*) from pronostic p left join jeu on p.jeu_id=jeu.jeu_id where p.MoyenneJuste is not null and joueur_id='$joueur_id' and jeu.saison_id='$saison_id'),1) 'moyenneJuste'
+ FROM pronostic left join jeu on pronostic.jeu_id=jeu.jeu_id where pronostic.MoyenneJuste is not null and jeu.saison_id='$saison_id' and joueur_id='$joueur_id' ";
   
   $listes = array();
   // Exécution de la requête 
@@ -2337,6 +2395,18 @@ function setMiseAJourPronostic($jeu_id,$joueur_id,$tableauPronostic)
         }  
     }
     return $erreur;
+}
+
+//met en base la moyenne des pourcentages de répartition où le prono est juste
+function setMoyenneJuste($jeu_id,$joueur_id,$moyenneJuste)
+{
+	$requete= "update pronostic set MoyenneJuste='$moyenneJuste' where jeu_id='$jeu_id' and joueur_id='$joueur_id'"; 
+    $result = mysql_query($requete);
+    if (mysql_errno() == 0) 
+    {
+        // return true;
+    }
+    return false;
 }
 
 function setIndiceGainProno7($jeu_id,$joueur_id,$indice)

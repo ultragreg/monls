@@ -9,7 +9,6 @@
          // On recherche tous les jeux de la saison demandée et la liste des joueurs
          $listeJeux       = getListeJeuxSaison($saison_id);
          $listeJoueurs    = getListeJoueurs();
-         
          // Affichage les initiales de tous les joueurs
          for($j=0;$j<sizeof($listeJoueurs);$j++)
          {

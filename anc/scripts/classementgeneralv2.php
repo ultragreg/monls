@@ -409,15 +409,18 @@ function getTRclassement($i, $premierepasse)
 			  
 			  //Rapport entre la moyenne du joueur et son indice de gain moyen (prise de risque)
 			  $joueur=$listeJoueurs[$j];
-
-              echo "(((((())))))";
-              echo $saison_id . "((((((";
-              echo $joueur["joueur_id"] . "(((((())))))";
-			  $res = getIndiceGainMoyenJoueurAF($saison_id,$joueur["joueur_id"]);
+			  
+			  //ancienne version, prenait en compte l'indice global, prono faux compris, ce qui n'est pas très juste, car la moyenne du joueur ne comprend que les résultats corrects.
+			  //$res = getIndiceGainMoyenJoueurAF($saison_id,$joueur["joueur_id"]);
+			  //$element=$res[0];
+			  //$indiceMoyen = stripslashes($element["moyenne"]);
+			  //$rapport = round($moyenne/(100-floatval($indiceMoyen)*10),2);
+			  //$RapportMoyenneIndiceParJoueur[$j]=$rapport;
+			  
+			  $res = getMoyenneJusteJoueurAF($saison_id,$joueur["joueur_id"]);
 			  $element=$res[0];
-			  $indiceMoyen = stripslashes($element["moyenne"]);
-              echo $moyenne . "!!!!!";
-			  $rapport = round($moyenne/(100-floatval($indiceMoyen)*10),2);
+			  $moyenneJusteSaison = stripslashes($element["moyenneJuste"]);
+			  $rapport = round($moyenne/$moyenneJusteSaison,2);
 			  $RapportMoyenneIndiceParJoueur[$j]=$rapport;
         }
         echo "<td class=\"infotitre\">".round($moyennejeu/$nbjeu)."</td></tr>\n";
@@ -504,7 +507,7 @@ function getTRclassement($i, $premierepasse)
 		
 		// Affichage des rapports entre la moyenne du joueur et son indice de gain moyen (prise de risque)
 		echo "<tr>";
-		echo "<td colspan=\"2\" class=\"eqg\">Rapport Moyenne/Prise de risque</td>\n";
+		echo "<td colspan=\"2\" class=\"eqg\">Rapport Moy. Joueur/Moy. % Joueurs = </td>\n";
         for($j=0;$j<sizeof($listeJoueurs);$j++)
         {
               echo "<td class=\"infotitre\">".$RapportMoyenneIndiceParJoueur[$j]."</td>\n";   
@@ -512,7 +515,7 @@ function getTRclassement($i, $premierepasse)
         echo "</tr>\n";
 
 		echo "<tr class=\"impaire\">";
-        echo "<td colspan=\"2\" class=\"eqg\">Classement / Prise de Risque</td>\n";
+        echo "<td colspan=\"2\" class=\"eqg\">Classement Prise de Risque</td>\n";
         
         // Affichage du classement par rapport à la prise de risque
         for($j=0;$j<sizeof($listeJoueurs);$j++)
@@ -535,7 +538,10 @@ function getTRclassement($i, $premierepasse)
 		
 		
         // ******************************** SANS LES FLASHS ************************************************ //
-
+		 echo "<tr><td colspan=2>&nbsp;</td><td colspan=24><font color='#6F2229' size=2><b>Explication du classement en fonction de la prise de risque :</b>
+				<br>Rapport entre la moyenne de bons pronostics du joueur et le pourcentage de joueurs FDJ ayant fait les mêmes pronostics que lui, sur l'ensemble de la saison. 
+				(Pourcentage stocké à chaque journée pour chaque joueur, se basant sur la Répartition de la page des pronostics).
+				<br>Un joueur qui a 50% de bons pronostics, là où 70% des personnes ont trouvés les mêmes résultats, sera moins bien classé qu'un joueur ayant 50% de bons pronostics là où seulement 40% des personnes ont trouvés les mêmes résultat que lui.</font></td></tr>";
          
         echo "<tr><td>&nbsp;</td></tr>";
 
@@ -552,7 +558,7 @@ function getTRclassement($i, $premierepasse)
         }
         echo "<td class=\"infotitre\" title=\"My\">Moy.</td></tr>";
         echo "</tr>\n";
-       
+		       
         echo "<tr class=\"impaire\"><td colspan=\"2\" class=\"eqg\">Moyenne générale sans les flashs</td>\n";
         
         // Affichage des moyennes générales sur l'ensemble des jeux pour chacun des joueurs
@@ -584,11 +590,20 @@ function getTRclassement($i, $premierepasse)
 			  
 			  //Rapport entre la moyenne du joueur et son indice de gain moyen (prise de risque)
 			  $joueur=$listeJoueurs[$j];
-			  $res = getIndiceGainMoyenJoueur($saison_id,$joueur["joueur_id"]);
+			  
+			  
+			  
+			  //ancienne version, prenait en compte l'indice global, prono faux compris, ce qui n'est pas très juste, car la moyenne du joueur ne comprend que les résultats corrects.
+			  //$res = getIndiceGainMoyenJoueur($saison_id,$joueur["joueur_id"]);
+			  //$element=$res[0];
+			  //$indiceMoyen = stripslashes($element["moyenne"]);
+			  //$rapport = round($moyenne/(100-floatval($indiceMoyen)*10),2);
+			  //$RapportMoyenneIndiceParJoueur[$j]=$rapport;
+			  
+			  $res = getMoyenneJusteJoueur($saison_id,$joueur["joueur_id"]);
 			  $element=$res[0];
-			  $indiceMoyen = stripslashes($element["moyenne"]);
-			 
-			  $rapport = round($moyenne/(100-floatval($indiceMoyen)*10),2);
+			  $moyenneJusteSaison = stripslashes($element["moyenneJuste"]);
+			  $rapport = round($moyenne/$moyenneJusteSaison,2);
 			  $RapportMoyenneIndiceParJoueur[$j]=$rapport;
       
         }
@@ -691,7 +706,7 @@ function getTRclassement($i, $premierepasse)
 
 		// Affichage des rapports entre la moyenne du joueur et son indice de gain moyen (prise de risque)
 		echo "<tr class=\"impaire\">";
-		echo "<td colspan=\"2\" class=\"eqg\">Rapport Moyenne/Prise de risque</td>\n";
+		echo "<td colspan=\"2\" class=\"eqg\">Rapport Moy. Joueur/Moy. % Joueurs = </td>\n";
         for($j=0;$j<sizeof($listeJoueurs);$j++)
         {
               echo "<td class=\"infotitre\">".$RapportMoyenneIndiceParJoueur[$j]."</td>\n";   
@@ -699,7 +714,7 @@ function getTRclassement($i, $premierepasse)
         echo "</tr>\n";
 
 		echo "<tr>";
-        echo "<td colspan=\"2\" class=\"eqg\">Classement / Prise de Risque</td>\n";
+        echo "<td colspan=\"2\" class=\"eqg\">Classement Prise de Risque</td>\n";
         
         // Affichage du classement par rapport à la prise de risque
         for($j=0;$j<sizeof($listeJoueurs);$j++)
