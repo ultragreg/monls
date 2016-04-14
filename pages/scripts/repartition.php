@@ -41,9 +41,6 @@ Le résultat est stocké dans la table 'indicateur'
 		$debug=true;
 	}
 
-    // Cron Hostinger ne gère pas les paramètres ; debug en dur pour le moment  
-	$debug=true;
-
 	// Jeu à 14 ou 15 matchs ?
 	$nbMatchsDeCeJeu  = getNbMatchsDeCeJeu($jeu);
 	//Récupératon de l'id Jeu Pronosoft
@@ -54,7 +51,16 @@ Le résultat est stocké dans la table 'indicateur'
 		echo "<br>--- PHASE 1 : Import en base des indices --- <br><br>\n";
 	}
 	//récupération des répartitions des matchs des joueurs pronosoft
-	$url="http://www.pronosoft.com/fr/concours/repartition_lotofoot.php?id715=" . $idSite;
+	$url="http://www.pronosoft.com/fr/concours/repartition_lotofoot.php?id15=" . $idSite;
+	if (isset($_GET['id']))
+	{
+		// Mode debug
+		$url="http://www.pronosoft.com/fr/concours/repartition_lotofoot.php?id15=" . $_GET['id'];
+	}
+
+	if ($debug) {
+		echo "<br>url:".$url."<br>\n";
+	}
 	$fic = file_get_html($url, false);
 	$match=array();
 	$repartition=array();
@@ -79,46 +85,50 @@ Le résultat est stocké dans la table 'indicateur'
 				$match = array();
 				$choix = $repart->find('td[class=matchs_av]');
 
-				$pourcent['1']=$choix[2]->plaintext;
-				$pourcent['N']=$choix[3]->plaintext;
-				$pourcent['2']=$choix[4]->plaintext;
-				//récupération de la couleur
-				$pourcent['C1']=str_replace ("pourcent_", "", $choix[2]->find('span[class*=pourcent]',0)->class);
-				$pourcent['CN']=trim(str_replace ("pourcent_", "", $choix[3]->find('span[class*=pourcent]',0)->class));
-				$pourcent['C2']=trim(str_replace ("pourcent_", "", $choix[4]->find('span[class*=pourcent]',0)->class));
-				$pourcent['1'] = trim(str_replace (" %", "" , $pourcent['1'] ));
-				$pourcent['N'] = trim(str_replace (" %", "" , $pourcent['N'] ));
-				$pourcent['2'] = trim(str_replace (" %", "" , $pourcent['2'] ));
-				
-				$choix1=$choix[2];
-				$choixN=$choix[3];
-				$choix2=$choix[4];
-				$match['choix1']=trim($choix1);
-				$match['choixN']=trim($choixN);
-				$match['choix2']=trim($choix2);
-				$repartition[$i]=$match;
-				$pourcentage[$i]=$pourcent;
-				if ($debug) {
-					echo "Match ".$choix[0] . " - " .$choix[1] . "<br>\n";
-					//echo "Choix  => 1 : [" . htmlspecialchars($match['choix1']) . "]<br>";
-					//echo "Choix  => N : [" . htmlspecialchars($match['choixN']) . "]<br>";
-					//echo "Choix  => 2 : [" . htmlspecialchars($match['choix2']) . "]<br>";
-					echo "Pourcentage C1 : [" . $pourcent['C1'] . "], CN : [" . $pourcent['CN'] . "], C2 : [" . $pourcent['C2'] . "]<br>\n";
-					echo "Pourcentage 1 : [" . $pourcent['1'] . "], N : [" . $pourcent['N'] . "],  2 : [" . $pourcent['2'] . "]<br>\n";
-				}		
-				$i++;
-				$indicateur->match_num=$i;
-				$indicateur->choix1= $match['choix1'];
-				$indicateur->choixN= $match['choixN'];
-				$indicateur->choix2= $match['choix2'];
-				$indicateur->pourcentageC1= $pourcent['C1'];
-				$indicateur->pourcentageCN= $pourcent['CN'];
-				$indicateur->pourcentageC2= $pourcent['C2'];
-				$indicateur->pourcentage1= $pourcent['1'];
-				$indicateur->pourcentageN= $pourcent['N'];
-				$indicateur->pourcentage2= $pourcent['2'];
-				$indicateur->ajoute();			
-				if ($i==$nbMatchsDeCeJeu) break;
+				if (isset($choix[2]) && isset($choix[3]) && isset($choix[4])) 
+				{
+					$pourcent['1']=$choix[2]->plaintext;
+					$pourcent['N']=$choix[3]->plaintext;
+					$pourcent['2']=$choix[4]->plaintext;
+					//récupération de la couleur
+					$pourcent['C1']=str_replace ("pourcent_", "", $choix[2]->find('span[class*=pourcent]',0)->class);
+					$pourcent['CN']=trim(str_replace ("pourcent_", "", $choix[3]->find('span[class*=pourcent]',0)->class));
+					$pourcent['C2']=trim(str_replace ("pourcent_", "", $choix[4]->find('span[class*=pourcent]',0)->class));
+					$pourcent['1'] = trim(str_replace (" %", "" , $pourcent['1'] ));
+					$pourcent['N'] = trim(str_replace (" %", "" , $pourcent['N'] ));
+					$pourcent['2'] = trim(str_replace (" %", "" , $pourcent['2'] ));
+					
+					$choix1=$choix[2];
+					$choixN=$choix[3];
+					$choix2=$choix[4];
+					$match['choix1']=trim($choix1);
+					$match['choixN']=trim($choixN);
+					$match['choix2']=trim($choix2);
+					$repartition[$i]=$match;
+					$pourcentage[$i]=$pourcent;
+					if ($debug) {
+						echo "Match ".$choix[0] . " - " .$choix[1] . "<br>\n";
+						//echo "Choix  => 1 : [" . htmlspecialchars($match['choix1']) . "]<br>";
+						//echo "Choix  => N : [" . htmlspecialchars($match['choixN']) . "]<br>";
+						//echo "Choix  => 2 : [" . htmlspecialchars($match['choix2']) . "]<br>";
+						echo "Pourcentage C1 : [" . $pourcent['C1'] . "], CN : [" . $pourcent['CN'] . "], C2 : [" . $pourcent['C2'] . "]<br>\n";
+						echo "Pourcentage 1 : [" . $pourcent['1'] . "], N : [" . $pourcent['N'] . "],  2 : [" . $pourcent['2'] . "]<br>\n";
+					}		
+					$i++;
+					$indicateur->match_num=$i;
+					$indicateur->choix1= $match['choix1'];
+					$indicateur->choixN= $match['choixN'];
+					$indicateur->choix2= $match['choix2'];
+					$indicateur->pourcentageC1= $pourcent['C1'];
+					$indicateur->pourcentageCN= $pourcent['CN'];
+					$indicateur->pourcentageC2= $pourcent['C2'];
+					$indicateur->pourcentage1= $pourcent['1'];
+					$indicateur->pourcentageN= $pourcent['N'];
+					$indicateur->pourcentage2= $pourcent['2'];
+					$indicateur->ajoute();			
+					if ($i==$nbMatchsDeCeJeu) break;					
+				}
+
 			}
 		}
 

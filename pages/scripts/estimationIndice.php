@@ -2,7 +2,7 @@
 	session_start();
 /*
 Ce script calcule les indices de gains pour un jeu et un joueur donné.
-Il va intérrogé une page du site de pronosoft avec en paramètres les pronostics du joueur
+Il va intérroger une page du site de pronosoft avec en paramètres les pronostics du joueur
 Le résultat est renvoyé dans un tableau json
 */
 

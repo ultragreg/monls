@@ -10,6 +10,10 @@ Le résultat est renvoyé sous la forme d'un tableau json
 function lectureRapports($debug, $type) {
 	$jeux=array();
 	$i=0;
+
+	if ($debug) {
+		echo "<br>--- PHASE 1 : Page livescore --- <br><br>\n";
+	}
 	//parcours de la première page
 	$fic = file_get_html('http://www.pronosoft.com/fr/lotofoot/livescore.php', false);
 	if (!empty($fic)) 
@@ -26,6 +30,10 @@ function lectureRapports($debug, $type) {
 			$rapports = array();
 			$rapport = $listeJeux->find('div[class=rapports]');
 			
+			if ($debug) {
+				echo "<br>".$titre.":".$comment."<br>\n";
+			}
+
 			$j=0;
 			//récupération des rangs de gain
 			foreach($rapport as $grille)
@@ -48,11 +56,19 @@ function lectureRapports($debug, $type) {
 					//ajout du jeu en cours dans le tableau global des jeux
 					$jeux[$i]=$jeu;
 					$i++;
+					if ($debug) {
+						echo "<br>   . ".$titre.":".$comment." => rapports :".$rapport."<br>\n";
+					}
 				}
 				$j=0;
 			}
 						
 		}
+	}
+
+
+	if ($debug) {
+		echo "<br>--- PHASE 2 : Page resultats-et-rapports --- <br><br>\n";
 	}
 	
 	//parcours de la seconde page
@@ -70,7 +86,11 @@ function lectureRapports($debug, $type) {
 			$comment = $listeJeux->find('thead',0)->plaintext;
 			$rapports = array();
 			$rapport = $listeJeux->find('div[class=rapports]');
-			
+
+			if ($debug) {
+				echo "<br>".$titre.":".$comment."<br>\n";
+			}
+
 			//récupération des rangs de gain
 			foreach($rapport as $grille)
 			{
@@ -92,6 +112,9 @@ function lectureRapports($debug, $type) {
 					//ajout du jeu en cours dans le tableau global des jeux
 					$jeux[$i]=$jeu;
 					$i++;
+					if ($debug) {
+						echo "<br>   . ".$titre.":".$comment." => rapports :".$rapport."<br>\n";
+					}
 				}
 				$j=0;
 			}
