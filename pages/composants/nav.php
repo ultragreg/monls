@@ -1,4 +1,16 @@
-<!-- Navigation -->
+
+<?php 
+
+// include database and object files
+include_once 'config/database.php';
+include_once 'config/util.php';
+include_once 'objects/saison.php';
+include_once 'objects/message.php';
+include_once 'objects/jeu.php';
+
+?>
+
+        <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -8,27 +20,25 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a href="index.php">                
-                    <img src="../dist/css/logo.png" alt="logo" class="hidden-xs"/>
+                    <img src="../dist/css/logo.png" alt="logo"/>
                 </a>
-                <a class="navbar-brand" href="index.php">Mon LS v2</a>
+                <?php 
+                if (isset($_SESSION['nom_joueur'])) 
+                {
+                    echo '<a class="navbar-brand" href="index.php"><span class="hidden-xs">Bienvenue </span>'.$_SESSION['nom_joueur'].'</a>';
+                }
+                else 
+                {
+                    echo '<a class="navbar-brand" href="index.php">Mon LS v2</a>';
+                }
+                ?>
             </div>
             <!-- /.navbar-header -->
 
             <?php 
             if (isset($_SESSION['id_joueur'])) 
             {
-            ?>
-            <ul class="nav navbar-top-links navbar-right">
-
-                <?php 
-
-                // include database and object files
-                include_once 'config/database.php';
-                include_once 'config/util.php';
-                include_once 'objects/saison.php';
-                include_once 'objects/message.php';
-                include_once 'objects/jeu.php';
-      
+                echo '<ul class="nav navbar-top-links navbar-right hidden-xs">';
                 // instantiate database and product object
                 $database = new Database();
                 $db = $database->getConnection();
@@ -50,7 +60,7 @@
                 $nbMessageTotal=$nbAppelDeFondsEnCours+$nbPronosticEnCours; 
                 if ($nbMessageTotal>0) {
                 ?>
-                <li class="dropdown">
+                <li class="dropdown ">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-envelope fa-fw"></i>  
                         <i class="fa fa-caret-down"></i>
@@ -205,7 +215,7 @@
             else
             {
             ?>
-            <ul class="nav navbar-top-links navbar-right">
+            <ul class="nav navbar-top-links navbar-right hidden-xs">
                 <li>
                     <a href="login.php"><i class="fa fa-sign-in fa-fw"></i> Connexion</a>
                 </li>
@@ -328,9 +338,22 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        
                         <?php
                         }
+                        echo '<li class="visible-xs">';
+                        if (isset($_SESSION['id_joueur'])) 
+                        {
+                            echo '<a href="scripts/deconnexion.php"><i class="fa fa-power-off fa-fw"></i> Déconnexion</a>';
+                        }
+                        else
+                        {
+                            echo '<a href="login.php"><i class="fa fa-sign-in fa-fw"></i> Connexion</a>';
+                        }
                         ?>
+                        </li>
+
+
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

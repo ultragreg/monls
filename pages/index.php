@@ -115,20 +115,7 @@
         ?>        
         
         <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <?php 
-                    if (isset($_SESSION['nom_joueur'])) {
-                        echo '<h1 class="page-header">Bienvenue '.$_SESSION['nom_joueur'].'</h1>';
-                    } else {
-                        echo '<h1 class="page-header">Tableau de bord</h1>';
-
-                    }
-                    ?>
-                    
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
+            <br>
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-3 col-md-6">
