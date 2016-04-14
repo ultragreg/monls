@@ -19,7 +19,7 @@ include_once 'objects/jeu.php';
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="index.php">                
+                <a href="index.php">
                     <img src="../dist/css/logo.png" alt="logo"/>
                 </a>
                 <?php 
