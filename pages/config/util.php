@@ -137,6 +137,32 @@ function getPosition($i)
   return "...";
 }
 
+function getPositionChiffre($i)
+{
+  if ($i==0)      return "1er";
+  if ($i==1)      return "2ème";
+  if ($i==2)      return "3ème";
+  if ($i==3)      return "4ème";
+  if ($i==4)      return "5ème";
+  if ($i==5)      return "6ème";
+  if ($i==6)      return "7ème";
+  if ($i==7)      return "8ème";
+  if ($i==8)      return "9ème";
+  if ($i==9)      return "10ème";
+  if ($i==10)      return "11ème";
+  if ($i==11)      return "12ème";
+  if ($i==12)      return "13ème";
+  if ($i==13)      return "14ème";
+  if ($i==14)      return "15ème";
+  if ($i==15)      return "16ème";
+  if ($i==16)      return "17ème";
+  if ($i==17)      return "18ème";
+  if ($i==18)      return "19ème";
+  if ($i==19)      return "20ème";
+  if ($i==20)      return "21ème";
+  return "...";
+}
+
 // Retourne 1 si gagnant ou 0 si non
 // Prend en paramètre :
 // 1. Le nombre de jeu de ce joueur : 7, 14 (ou 15)

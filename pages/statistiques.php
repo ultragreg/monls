@@ -1,10 +1,6 @@
 <?php include("composants/head.php"); ?>
 
-
-
 <body>
-
-
 
     <div id="wrapper">
         <?php 
@@ -15,47 +11,28 @@
         include_once 'objects/saison.php';
         include_once 'objects/caisse.php';
         include_once 'objects/statistique.php';
-        include_once 'objects/jeu.php';
-
-         
+        include_once 'objects/jeu.php';     
 
         // instantiate database and product object
-
         $database = new Database();
-
         $db = $database->getConnection();
 
-         
-
+        
         // Recherche de la saison courante
-
         $saison = new Saison($db);
-
         $saison = $saison->chargeSaisonCourante();
-
-    
+ 
 
         // Recherche de la saison courante
-
         $stat = new Statistique($db);
-
         $stat->saison_id = $saison->saison_id;
 
-
-
         // Nombre de Jeu
-
         $jeu = new Jeu($db);
-
         $jeu->saison_id = $saison->saison_id;
-
         $jeu->chargeNombreJeux();
-
         $jeu_nombre = $jeu->jeu_nombre;
-
         $jeu->chargeDernierJeu();
-
-
 
         include_once 'composants/nav.php';
 
@@ -64,62 +41,40 @@
         ?> 
 
         <div id="page-wrapper">
-
             <div class="row">
-
                 <div class="col-lg-12">
-
                     <h1 class="page-header">Statistiques
-
                     </h1>
-
                 </div>
-
                 <!-- /.col-lg-12 -->
-
             </div>
 
-
-
             <?php
-
             $stmt = $stat->litSommeGainsParSaison();
-
             $num = $stmt->rowCount();
-
             if($num>0){
-
             ?>
-
             <div class="row">
-
                 <div class="col-lg-12">
-
                     <div class="panel panel-primary">
-
                         <div class="panel-heading">
-
                             Somme des Gains / saison
-
                         </div>
-
                         <div class="panel-body">
-
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-caisse">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-center">Saison</th>
-                                            <th class="text-center">Somme</th>
-                                            <th class="text-center">Nb de Gains</th>
-                                            <th class="text-center">Nb de Jeu</th>
-                                            <th class="text-center">Nb de Prono</th>
-                                            <th class="text-center">Moy. nbre gain / nbre jeu</th>
-                                            <th class="text-center">Moy. montant gain / montant total </th>
-                                            <th class="text-center">Gain moyen / Nb jeu</th>                                           
-                                        </tr>
-                                    </thead>
-
-                                    <tbody>
+                                   <thead>
+                                       <tr>
+                                           <th class="text-center">Saison</th>
+                                           <th class="text-center">Somme</th>
+                                           <th class="text-center">Nb de Gains</th>
+                                          <th class="text-center">Nb de Jeu</th>
+                                           <th class="text-center">Nb de Prono</th>
+                                           <th class="text-center hidden-xs">Moy. nbre gain / nbre jeu</th>
+                                           <th class="text-center hidden-xs">Moy. montant gain / montant total </th>
+                                           <th class="text-center hidden-xs">Gain moyen / Nb jeu</th>                                           
+                                       </tr>
+                                   </thead>
+                                   <tbody>
 
                                         <?php
 
@@ -154,12 +109,12 @@
                                                 echo "<td class='text-center'>{$nbgain}</td>";
                                                 echo "<td class='text-center'>{$nbmatch}</td>";
                                                 echo "<td class='text-center'>{$nbprono}</td>";
-                                                echo "<td class='text-center'>{$moyenneNombreGain} %</td>";
-                                                echo "<td class='text-center'>{$moyenneGain} %</td>";
+                                                echo "<td class='text-center hidden-xs'>{$moyenneNombreGain} %</td>";
+                                                echo "<td class='text-center hidden-xs'>{$moyenneGain} %</td>";
                                                 if ($total!=0) {
-                                                    echo "<td class='text-center'>{$moyenneGainMatch} &euro;</td>";
+                                                    echo "<td class='text-center hidden-xs'>{$moyenneGainMatch} &euro;</td>";
                                                 } else {
-                                                    echo "<td class='text-center'>&nbsp;</td>";
+                                                    echo "<td class='text-center hidden-xs'>&nbsp;</td>";
                                                 }
                                             echo "</tr>";
                                         }    

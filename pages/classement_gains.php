@@ -50,7 +50,8 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Classement par gains</h1>
+                    <h1 class="page-header hidden-xs">Classement par gains</h1>
+                    <h1 class="page-header visible-xs">Class. Gains</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -76,9 +77,10 @@
                                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                         extract($row);
                                         echo "<tr>";
-                                            echo "<td>".getPosition($i)."</td>";
+                                            echo "<td class='visible-xs'>".getPositionChiffre($i)."</td>";
+                                            echo "<td class='hidden-xs'>".getPosition($i)."</td>";
                                             echo "<td>{$nom}</td>";
-                                            echo "<td class='text-center'>".number_format($total,2)." &euro;</td>";
+                                            echo "<td class='text-center'>".number_format($total,2)."&nbsp;&euro;</td>";
                                             $totalGeneral=$totalGeneral+$total;
                                         echo "</tr>";
                                         $i=$i+1;

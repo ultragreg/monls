@@ -40,7 +40,8 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Classement général</h1>
+                    <h1 class="page-header hidden-xs">Classement général</h1>
+                    <h1 class="page-header visible-xs">Class. général</h1>                    
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
