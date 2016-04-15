@@ -59,10 +59,10 @@
                     <h1 class="page-header" id="titreFenetreSaisie">
                     <?php 
                     if ($jeu->jeu_bloque=="1") {
-                        echo "Saisie du résultat";
+                        echo "Saisie Résultat";
                         echo "<span style='display:none;' id='typeOperation'>R</span>";
                     } else {
-                        echo "Saisie du pronostic";
+                        echo "Prochain Jeu";
                         echo "<span style='display:none;'  id='typeOperation'>P</span>";
                     }
                     ?>

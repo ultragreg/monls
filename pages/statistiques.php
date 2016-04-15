@@ -68,7 +68,7 @@
                                            <th class="text-center">Somme</th>
                                            <th class="text-center">Nb de Gains</th>
                                           <th class="text-center">Nb de Jeu</th>
-                                           <th class="text-center">Nb de Prono</th>
+                                           <th class="text-center hidden-xs">Nb de Prono</th>
                                            <th class="text-center hidden-xs">Moy. nbre gain / nbre jeu</th>
                                            <th class="text-center hidden-xs">Moy. montant gain / montant total </th>
                                            <th class="text-center hidden-xs">Gain moyen / Nb jeu</th>                                           
@@ -108,7 +108,7 @@
                                                 }
                                                 echo "<td class='text-center'>{$nbgain}</td>";
                                                 echo "<td class='text-center'>{$nbmatch}</td>";
-                                                echo "<td class='text-center'>{$nbprono}</td>";
+                                                echo "<td class='text-center hidden-xs'>{$nbprono}</td>";
                                                 echo "<td class='text-center hidden-xs'>{$moyenneNombreGain} %</td>";
                                                 echo "<td class='text-center hidden-xs'>{$moyenneGain} %</td>";
                                                 if ($total!=0) {
