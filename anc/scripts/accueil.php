@@ -513,28 +513,33 @@
 					$pourcent=array();
 					$match = array();
 					$choix = $repart->find('td[class=matchs_av]');
-					$pourcent['1']=$choix[2]->plaintext;
-					$pourcent['N']=$choix[3]->plaintext;
-					$pourcent['2']=$choix[4]->plaintext;
-					//récupération de la couleur
-					$pourcent['C1']=str_replace ("pourcent_", "", $choix[2]->find('span[class*=pourcent]',0)->class);
-					$pourcent['CN']=str_replace ("pourcent_", "", $choix[3]->find('span[class*=pourcent]',0)->class);
-					$pourcent['C2']=str_replace ("pourcent_", "", $choix[4]->find('span[class*=pourcent]',0)->class);
-					$pourcent['1'] = str_replace (" %", "" , $pourcent['1'] );
-					$pourcent['N'] = str_replace (" %", "" , $pourcent['N'] );
-					$pourcent['2'] = str_replace (" %", "" , $pourcent['2'] );
-					
-					//$choix1=$choix[2];
-					//$choixN=$choix[3];
-					//$choix2=$choix[4];
-					//$match['choix1']=$choix1;
-					//$match['choixN']=$choixN;
-					//$match['choix2']=$choix2;
-					//$repartition[$i]=$match;
-					$pourcentage[$i]=$pourcent;
-					$i++;
-					if ($i==$nbMatchsDeCeJeu) break;
-				}
+
+          if (isset($choix[2]) && isset($choix[3]) && isset($choix[4])) 
+          {
+
+  					$pourcent['1']=$choix[2]->plaintext;
+  					$pourcent['N']=$choix[3]->plaintext;
+  					$pourcent['2']=$choix[4]->plaintext;
+  					//récupération de la couleur
+  					$pourcent['C1']=str_replace ("pourcent_", "", $choix[2]->find('span[class*=pourcent]',0)->class);
+  					$pourcent['CN']=str_replace ("pourcent_", "", $choix[3]->find('span[class*=pourcent]',0)->class);
+  					$pourcent['C2']=str_replace ("pourcent_", "", $choix[4]->find('span[class*=pourcent]',0)->class);
+  					$pourcent['1'] = str_replace (" %", "" , $pourcent['1'] );
+  					$pourcent['N'] = str_replace (" %", "" , $pourcent['N'] );
+  					$pourcent['2'] = str_replace (" %", "" , $pourcent['2'] );
+  					
+  					//$choix1=$choix[2];
+  					//$choixN=$choix[3];
+  					//$choix2=$choix[4];
+  					//$match['choix1']=$choix1;
+  					//$match['choixN']=$choixN;
+  					//$match['choix2']=$choix2;
+  					//$repartition[$i]=$match;
+  					$pourcentage[$i]=$pourcent;
+  					$i++;
+  					if ($i==$nbMatchsDeCeJeu) break;
+  				}
+        }
 			}
 		}
 		
