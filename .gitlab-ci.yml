@@ -1,7 +1,8 @@
-before_script:
-    - curl -sSL https://get.docker.com/ | sh
-
 build-monls:
     script:
+        - sudo usermod -aG docker 
+        - sudo service docker start
+        - service docker status 
         - docker build .
+        - docker run hello-world 
 
