@@ -1,6 +1,5 @@
 build-monls:
     script:
-        - usermod -aG docker 
-        - docker build .
         - docker run hello-world 
+        - docker build .
 
