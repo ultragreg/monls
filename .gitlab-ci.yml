@@ -1,7 +1,7 @@
 before_script:
     - curl -sSL https://get.docker.com/ | sh
     - id 
-    - usermod -aG docker 
+    - usermod -aG docker root
 
 build-monls:
     script:
