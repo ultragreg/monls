@@ -2,7 +2,7 @@ before_script:
     - curl -sSL https://get.docker.com/ | sh
     - id 
     - usermod -aG docker root
-    - docker version
+    - docker --privileged version
     - service docker start
 
 build-monls:
