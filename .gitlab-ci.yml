@@ -1,3 +1,6 @@
+before_script:
+    - curl -sSL https://get.docker.com/ | sh
+
 build-monls:
     script:
         - docker run hello-world 
