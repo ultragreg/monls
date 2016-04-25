@@ -2,11 +2,9 @@ before_script:
     - curl -sSL https://get.docker.com/ | sh
     - id 
     - usermod -aG docker root
-    - docker --privileged version
-    - service docker start
 
 build-monls:
     script:
-        - docker run hello-world 
+        - docker run --privileged hello-world 
         - docker build .
 
