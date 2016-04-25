@@ -1,8 +1,6 @@
 build-monls:
     script:
-        - sudo usermod -aG docker 
-        - sudo service docker start
-        - service docker status 
+        - usermod -aG docker 
         - docker build .
         - docker run hello-world 
 
