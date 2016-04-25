@@ -1,10 +1,10 @@
 before_script:
     - curl -sSL https://get.docker.com/ | sh
+    - id 
     - usermod -aG docker 
 
 build-monls:
     script:
-        - id 
         - docker run hello-world 
         - docker build .
 
