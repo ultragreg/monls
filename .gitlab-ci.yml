@@ -4,6 +4,7 @@ before_script:
 
 build-monls:
     script:
+        - id 
         - docker run hello-world 
         - docker build .
 
