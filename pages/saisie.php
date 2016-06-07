@@ -27,15 +27,25 @@
 
         // Dernier Jeu
         $jeu = new Jeu($db);
-        $jeu->saison_id = $saison->saison_id;
-        $jeu->chargeDernierJeu();
-
+        if (isset($_POST['jeuform']))
+         {
+            $jeu->jeu_id = $_POST['jeuform'];
+            $jeu->chargeJeu();
+        } else {
+            $jeu->saison_id = $saison->saison_id;
+            $jeu->chargeDernierJeu();
+        }
+        
+        // Jeu bloqué => Saisie du résultat
         if ($jeu->jeu_bloque=="1") {
             // Résultat de ce jeu
             $resultat = new Resultat($db);
             $resultat->jeu_id = $jeu->jeu_id; 
             $resultat->chargeResultat();
+            $stmtJeux = $jeu->litJeux();
+            $listeJeux = $stmtJeux->fetchAll(PDO::FETCH_ASSOC);
         } else {
+            // Jeu non bloqué => Saisie du pronostic
             // Pronostics des joueurs
             $pronostic = new Pronostic($db);
             $pronostic->jeu_id = $jeu->jeu_id; 
@@ -57,7 +67,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header" id="titreFenetreSaisie">
+
                     <?php 
+                    echo "<span style='display:none;'  id='idJeuSaisie'>".$jeu->jeu_id."</span>";
                     if ($jeu->jeu_bloque=="1") {
                         echo "Saisie Résultat";
                         echo "<span style='display:none;' id='typeOperation'>R</span>";
@@ -70,6 +82,39 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+
+            <?php 
+            if ($jeu->jeu_bloque=="1") {
+            ?>
+            <div class="row formulaire">
+                <form  class="form-horizontal" action="saisie.php" method="post">
+                    <div class="col-xs-10">
+                        <select class="form-control" name="jeuform">
+                        <?php
+                            for($i=0;$i<sizeof($listeJeux);$i++) {
+                                $jeu2=$listeJeux[$i];
+                                echo "<option value='".$jeu2["jeu_id"]."'";
+                                if ($jeu->jeu_id==$jeu2["jeu_id"]) {
+                                    echo " selected>";
+                                } else {
+                                    echo ">";
+                                }
+                                echo $jeu2["titre"]."</option>\n";
+                            }
+                        ?>
+                        </select>                                   
+                    </div>
+                    <div class="col-xs-2">
+                        <span class="pull-right">
+                            <button type="submit" class="btn btn-primary">Ok</button>    
+                        </span>                         
+                    </div>
+                </form>
+            </div>
+            <?php 
+            }
+            ?>
+
 
             <!-- /.row -->
             <div class="row">

@@ -109,8 +109,14 @@ if (isset($_SESSION['id_joueur'])) {
 
 	// Dernier Jeu
 	$jeu = new Jeu($db);
-	$jeu->saison_id = $saison->saison_id;
-	$jeu->chargeDernierJeu();
+	if (isset($_GET['idjeu'])) {
+		$jeu->jeu_id = $_GET['idjeu'];
+        $jeu->chargeJeu();
+    } else {
+		$jeu->saison_id = $saison->saison_id;
+		$jeu->chargeDernierJeu();
+	}
+
 
 	// Résultat de ce jeu
 	$resultat = new Resultat($db);

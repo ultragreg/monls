@@ -282,7 +282,8 @@
 						toastr.success("Le jeu est débloqué", "Monls");
 					}
 					// Blocage ok => Raffraichissement de la page
-					window.location.reload();
+					//window.location.reload();
+					window.location.href="index.php"
 				}
 					
 			},
@@ -296,7 +297,7 @@
 	/**
 	 * Appel pour mettre à jour une saisie d'un résultat ou d'un pronostic
 	 */
-	function setSaisie(t, l) {
+	function setSaisie(t, l, i) {
 
 		toastr.options = {
 		  "positionClass": "toast-top-center"
@@ -305,7 +306,8 @@
 		$.ajax({
 			cache: false,
 			data: {	type : t, 
-					param: l
+					param: l,
+					idjeu : i
 				},
 			url : "scripts/saisie.php",
 			success : function( msg, status,xhr ) {
@@ -910,6 +912,7 @@
   	$('#btnValider').click( function(e) {
 		e.preventDefault();
 		var type = $( '#typeOperation' ).text().toUpperCase();
+		var id = $( '#idJeuSaisie' ).text().toUpperCase();
 		if ( (type=="R") || (type=="P" &&verificationSaisie())) {
 			var param='';
 			/* Appel de la fct setSaisie avec les boutons ayant la classe primary (saisie donc) */
@@ -919,7 +922,7 @@
 			    	param=param+":"+$this.attr("id");
 			    }
 			});
-			setSaisie(type, param+":");		
+			setSaisie(type, param+":", id);		
 		}
 	});
 
