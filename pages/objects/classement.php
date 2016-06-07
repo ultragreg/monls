@@ -19,7 +19,7 @@ class Classement {
 
     function litClassement()
     {
-        $query = "select j.nom,c.moyenne,c.evolution, c.rapport, c.posRisque 
+        $query = "select j.nom,c.moyenne,c.evolution, c.rapport, c.posRisque, j.joueur_id 
                 from classement c, joueur j 
                 where c.joueur_id=j.joueur_id 
                 and saison_id={$this->saison_id} 

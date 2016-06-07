@@ -70,7 +70,13 @@ function isCookieOk() {
 // Fonction utilisée par un tri sur la moyenne puis sur le nom du joueur si même moyenne 
 function compareMoyenne($a, $b)
 {
-	return $b["moyenne"] > $a["moyenne"] ? true : ($b["moyenne"] == $a["moyenne"] && $b["nom"] < $a["nom"] ? true : false) ;
+  return $b["moyenne"] > $a["moyenne"] ? true : ($b["moyenne"] == $a["moyenne"] && $b["nom"] < $a["nom"] ? true : false) ;
+}
+
+// Fonction utilisée par un tri sur la position
+function comparePosition($a, $b)
+{
+  return $b["position"] < $a["position"] ? true : false;
 }
 
 
@@ -161,6 +167,23 @@ function getPositionChiffre($i)
   if ($i==19)      return "20ème";
   if ($i==20)      return "21ème";
   return "...";
+}
+
+
+function getPositionClassement($idj, $listeClassement)
+{
+  for($i=0;$i<sizeof($listeClassement);$i++) {
+      $c=$listeClassement[$i];
+      if ($idj == $c["joueur_id"]) {
+        $j=$i+1;
+        if ($j==1) {
+          return "$j er";
+        } else {
+          return "$j ème";
+        }
+      }
+  } 
+  return;
 }
 
 // Retourne 1 si gagnant ou 0 si non

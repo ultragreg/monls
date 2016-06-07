@@ -11,6 +11,7 @@
         include_once 'config/database.php';
         include_once 'config/util.php';
         include_once 'objects/gain.php';
+        include_once 'objects/classement.php';
         include_once 'objects/saison.php';
         include_once 'objects/joueur.php';
         include_once 'objects/jeu.php';
@@ -40,7 +41,13 @@
         // Recherche la liste des joueurs
         $joueurs = new Joueur($db);
         $stmtJoueurs = $joueurs->litJoueurs();
-        
+         
+        // Classement
+        $classement = new Classement($db);
+        $classement->saison_id = $saison->saison_id; 
+        $stmtClassement = $classement->litClassement();
+        $listeClassementGeneral = $stmtClassement->fetchAll(PDO::FETCH_ASSOC);
+    
         include_once 'composants/nav.php';
         ?>
 
@@ -64,27 +71,45 @@
                                 <thead class="bg-primary ">
                                     <tr>
                                         <th class="text-center">Position</th>
-                                        <th class="text-center">Nom</th>
+                                        <th class="text-center">Nom (Classement Gen.)</th>
                                         <th class="text-center">Gain</th>
                                     </tr>
                                 </thead> 
                                 <tbody>
                                     <?php
-                                    if($num>0){
-
-                                    $i=0;
-                                    $totalGeneral=0;
-                                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                        extract($row);
-                                        echo "<tr>";
-                                            echo "<td class='visible-xs'>".getPositionChiffre($i)."</td>";
-                                            echo "<td class='hidden-xs'>".getPosition($i)."</td>";
-                                            echo "<td>{$nom}</td>";
-                                            echo "<td class='text-center'>".number_format($total,2)."&nbsp;&euro;</td>";
-                                            $totalGeneral=$totalGeneral+$total;
-                                        echo "</tr>";
-                                        $i=$i+1;
-                                    }    
+                                    if($num>0) {
+                                        $pos=0;
+                                        $cpt=0;
+                                        $totalprec=-1;
+                                        $tab=array();
+                                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                            extract($row);
+                                            if ($total!=$totalprec) {
+                                                $pos=$pos+1;
+                                            }
+                                            $tab[$cpt]=array( 'nom'=> $nom, 
+                                                            'total' => $total, 
+                                                            'position' =>(($pos)*100)+getPositionClassement($joueur_id,$listeClassementGeneral),
+                                                            'positionClassement' =>getPositionClassement($joueur_id,$listeClassementGeneral));
+                                            $totalprec=$total;
+                                            $cpt=$cpt+1;
+                                        }
+                                        // Tableau trié ? 
+                                        if ($tab) {
+                                           usort($tab, "comparePosition");
+                                           $i=0;
+                                           $totalGeneral=0;
+                                           foreach ($tab as &$value) {
+                                                echo "<tr>";
+                                                echo "<td class='visible-xs'>".getPositionChiffre($i)."</td>";
+                                                echo "<td class='hidden-xs'>".getPosition($i)."</td>";
+                                                echo "<td>" . $value['nom'] . " (". $value['positionClassement'] . ")</td>";
+                                                echo "<td class='text-center'>".number_format($value['total'],2)."&nbsp;&euro;</td>";
+                                                echo "</tr>";
+                                                $totalGeneral=$totalGeneral+$total;
+                                                $i=$i+1;
+                                            }
+                                        }
                                     }
                                     ?>                                    
 
