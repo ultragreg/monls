@@ -44,12 +44,12 @@ include_once 'objects/jeu.php';
                 $db = $database->getConnection();
 
                 // Saison courante
-                $saison = new Saison($db);
-                $saison = $saison->chargeSaisonCourante();
+                $saisonNav = new Saison($db);
+                $saisonNav = $saisonNav->chargeSaisonCourante();
 
                 // Chargement du dernier Jeu
                 $jeunav = new Jeu($db);
-                $jeunav->saison_id = $saison->saison_id;
+                $jeunav->saison_id = $saisonNav->saison_id;
                 $jeunav->chargeDernierJeu();
          
                 // Messages de la barre de notification

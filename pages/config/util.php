@@ -140,6 +140,15 @@ function getPosition($i)
   if ($i==18)      return "Dix-neuvième";
   if ($i==19)      return "Vingtième";
   if ($i==20)      return "Vingt-et-unième";
+  if ($i==21)      return "Vingt-deuxième";
+  if ($i==22)      return "Vingt-troisième";
+  if ($i==23)      return "Vingt-quatrième";
+  if ($i==24)      return "Vingt-cinquième";
+  if ($i==25)      return "Vingt-sixième";
+  if ($i==26)      return "Vingt-septième";
+  if ($i==27)      return "Vingt-huitième";
+  if ($i==28)      return "Vingt-neuvième";
+  if ($i==29)      return "Trentième";
   return "...";
 }
 
@@ -166,6 +175,15 @@ function getPositionChiffre($i)
   if ($i==18)      return "19ème";
   if ($i==19)      return "20ème";
   if ($i==20)      return "21ème";
+  if ($i==21)      return "22ème";
+  if ($i==22)      return "23ème";
+  if ($i==23)      return "24ème";
+  if ($i==24)      return "25ème";
+  if ($i==25)      return "26ème";
+  if ($i==26)      return "27ème";
+  if ($i==27)      return "28ème";
+  if ($i==28)      return "29ème";
+  if ($i==29)      return "30ème";
   return "...";
 }
 
@@ -175,12 +193,7 @@ function getPositionClassement($idj, $listeClassement)
   for($i=0;$i<sizeof($listeClassement);$i++) {
       $c=$listeClassement[$i];
       if ($idj == $c["joueur_id"]) {
-        $j=$i+1;
-        if ($j==1) {
-          return "$j er";
-        } else {
-          return "$j ème";
-        }
+        return $i+1;
       }
   } 
   return;

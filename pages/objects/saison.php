@@ -28,7 +28,7 @@ class Saison {
         $this->saison_id=$saison_id;
         $this->saison_nom=$nom;
         $this->saison_commentaire=$commentaire;
-        return true;
+        return $this;
       }
       return false;
     }

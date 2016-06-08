@@ -1,12 +1,8 @@
 <?php include("composants/head.php"); ?>
 
 <body>
-
     <div id="wrapper">
-
         <?php 
-
-
         // include database and object files
         include_once 'config/database.php';
         include_once 'config/util.php';
@@ -20,9 +16,17 @@
         $database = new Database();
         $db = $database->getConnection();
          
-        // Recherche de la saison courante
+        // Quelle saison à charger ? 
         $saison = new Saison($db);
-        $saison = $saison->chargeSaisonCourante();
+        if (isset($_POST['saisonForm']))
+         {
+            $saison->saison_id = $_POST['saisonForm'];
+            $saison = $saison->chargeSaison();
+        } else {
+            // Recherche de la saison courante
+            $saison = $saison->chargeSaisonCourante();
+        }
+
    
         // Nombre de Jeu
         $jeu = new Jeu($db);
@@ -37,6 +41,10 @@
         $gainsJson = $gain->litGainsJson();
         $stmt = $gain->litGains();
         $num = $stmt->rowCount();
+
+        // Liste des saisons qui ont des gains
+        $stmtSaisonsGain = $gain->litSaisons();
+        $listeSaisonsGain = $stmtSaisonsGain->fetchAll(PDO::FETCH_ASSOC);
 
         // Recherche la liste des joueurs
         $joueurs = new Joueur($db);
@@ -62,6 +70,35 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+
+
+            <div class="row formulaire">
+                <form  class="form-horizontal" action="classement_gains.php" method="post">
+                    <div class="col-xs-10">
+                        <select class="form-control" name="saisonForm">
+                        <?php
+                            for($i=0;$i<sizeof($listeSaisonsGain);$i++) {
+                                $s=$listeSaisonsGain[$i];
+                                echo "<option value='".$s["saison_id"]."'";
+                                if ($saison->saison_id==$s["saison_id"]) {
+                                    echo " selected>";
+                                } else {
+                                    echo ">";
+                                }
+                                echo $s["nom"]."</option>\n";
+                            }
+                        ?>
+                        </select>                                   
+                    </div>
+                    <div class="col-xs-2">
+                        <span class="pull-right">
+                            <button type="submit" class="btn btn-primary">Ok</button>    
+                        </span>                         
+                    </div>
+                </form>
+            </div>
+
+
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-6">
@@ -87,10 +124,11 @@
                                             if ($total!=$totalprec) {
                                                 $pos=$pos+1;
                                             }
+                                            $positionClassementGen = getPositionClassement($joueur_id,$listeClassementGeneral);
                                             $tab[$cpt]=array( 'nom'=> $nom, 
                                                             'total' => $total, 
-                                                            'position' =>(($pos)*100)+getPositionClassement($joueur_id,$listeClassementGeneral),
-                                                            'positionClassement' =>getPositionClassement($joueur_id,$listeClassementGeneral));
+                                                            'position' =>(($pos)*100)+$positionClassementGen,
+                                                            'positionClassement' =>$positionClassementGen);
                                             $totalprec=$total;
                                             $cpt=$cpt+1;
                                         }
@@ -103,7 +141,13 @@
                                                 echo "<tr>";
                                                 echo "<td class='visible-xs'>".getPositionChiffre($i)."</td>";
                                                 echo "<td class='hidden-xs'>".getPosition($i)."</td>";
-                                                echo "<td>" . $value['nom'] . " (". $value['positionClassement'] . ")</td>";
+                                                if ($value['positionClassement'] == 1)  {
+                                                    $posClassement=" (1 er)";
+                                                } else {
+                                                    $posClassement=" (".$value['positionClassement']." ème)";
+                                                }
+
+                                                echo "<td>" . $value['nom'] . $posClassement . "</td>";
                                                 echo "<td class='text-center'>".number_format($value['total'],2)."&nbsp;&euro;</td>";
                                                 echo "</tr>";
                                                 $totalGeneral=$totalGeneral+$total;

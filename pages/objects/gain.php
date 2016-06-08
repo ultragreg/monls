@@ -35,13 +35,27 @@ class Gain {
     }
 
 
+    function litSaisons()
+    {
+      $query = "SELECT distinct g.saison_id, s.nom 
+                FROM gain g, saison s
+                where g.saison_id = s.saison_id
+                ORDER BY saison_id DESC";
+      $stmt = $this->conn->prepare( $query );
+      $stmt->execute();
+      return $stmt;
+    }
+
+
     function litGains()
     {
-      $query = "SELECT gain_id, gain.joueur_id, joueur.nom, sum( somme ) AS total, date 
-                FROM gain, joueur
-                WHERE saison_id = {$this->saison_id}
-                AND gain.joueur_id = joueur.joueur_id
-                GROUP BY joueur_id
+      $query = "SELECT gain_id, j.joueur_id, j.nom, g.saison_id, sum( somme ) AS total, date 
+                FROM gain g
+                RIGHT OUTER JOIN joueur j
+                ON g.joueur_id = j.joueur_id
+                AND g.saison_id={$this->saison_id}
+                where j.actif='O'
+                GROUP BY j.joueur_id
                 ORDER BY total DESC";
       $stmt = $this->conn->prepare( $query );
       $stmt->execute();
@@ -66,11 +80,13 @@ class Gain {
 
     function litGainsJson()
     {
-      $query = "SELECT gain.joueur_id, joueur.nom, sum( somme ) AS total
-                FROM gain, joueur
-                WHERE saison_id = {$this->saison_id}
-                AND gain.joueur_id = joueur.joueur_id
-                GROUP BY joueur_id
+      $query = "SELECT gain_id, j.joueur_id, j.nom, g.saison_id, sum( somme ) AS total, date 
+                FROM gain g
+                RIGHT OUTER JOIN joueur j
+                ON g.joueur_id = j.joueur_id
+                AND g.saison_id={$this->saison_id}
+                where j.actif='O'
+                GROUP BY j.joueur_id
                 ORDER BY total DESC";
       $stmt = $this->conn->prepare( $query );
       $stmt->execute();
@@ -80,7 +96,7 @@ class Gain {
             $tmp=$tmp . ",";
         }
         extract($row);
-        $tmp = $tmp . '{"label": "' . $nom . '","data": ' . $total . '}';
+        $tmp = $tmp . '{"label": "' . $nom . '","data": ' . intval($total) . '}';
       }  
       $tmp=$tmp . "]";
       return $tmp;
