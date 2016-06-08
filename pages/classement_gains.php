@@ -151,7 +151,7 @@
                                                 echo "<td>" . $value['nom'] . $posClassement . "</td>";
                                                 echo "<td class='text-center'>".number_format($value['total'],2)."&nbsp;&euro;</td>";
                                                 echo "</tr>";
-                                                $totalGeneral=$totalGeneral+$total;
+                                                $totalGeneral=$totalGeneral+number_format($value['total'],2);
                                                 $i=$i+1;
                                             }
                                         }
