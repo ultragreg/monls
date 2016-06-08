@@ -23,7 +23,7 @@ class Classement {
                 from classement c, joueur j 
                 where c.joueur_id=j.joueur_id 
                 and saison_id={$this->saison_id} 
-                order by moyenne desc";
+                order by moyenne desc, j.nom asc";
         $stmt = $this->conn->prepare( $query );
         $stmt->execute();
         return $stmt;

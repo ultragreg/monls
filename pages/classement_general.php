@@ -16,11 +16,23 @@
         // instantiate database and product object
         $database = new Database();
         $db = $database->getConnection();
-  
-        // Recherche de la saison courante
+      
+        // Quelle saison à charger ? 
         $saison = new Saison($db);
-        $saison = $saison->chargeSaisonCourante();
+        if (isset($_POST['saisonForm']))
+         {
+            $saison->saison_id = $_POST['saisonForm'];
+            $saison = $saison->chargeSaison();
+        } else {
+            // Recherche de la saison courante
+            $saison = $saison->chargeSaisonCourante();
+        }
+
    
+        // Liste des saisons
+        $stmtSaisonsGain = $saison->litSaisons();
+        $listeSaisonsGain = $stmtSaisonsGain->fetchAll(PDO::FETCH_ASSOC);
+
         // Classement
         $classement = new Classement($db);
         $classement->saison_id = $saison->saison_id; 
@@ -40,10 +52,32 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header hidden-xs">Classement général</h1>
-                    <h1 class="page-header visible-xs">Class. général</h1>                    
+                    <h1 class="page-header hidden-xs">Classement sans les gains</h1>
+                    <h1 class="page-header visible-xs">Class. sans gains</h1>                    
                 </div>
                 <!-- /.col-lg-12 -->
+            </div>
+
+
+            <div class="row formulaire">
+                <form  class="form-horizontal" action="classement_general.php" method="post">
+                    <div class="col-xs-12">
+                        <select class="form-control" name="saisonForm" onchange="this.form.submit()">
+                        <?php
+                            for($i=0;$i<sizeof($listeSaisonsGain);$i++) {
+                                $s=$listeSaisonsGain[$i];
+                                echo "<option value='".$s["saison_id"]."'";
+                                if ($saison->saison_id==$s["saison_id"]) {
+                                    echo " selected>";
+                                } else {
+                                    echo ">";
+                                }
+                                echo $s["nom"]."</option>\n";
+                            }
+                        ?>
+                        </select>                                   
+                    </div>
+                </form>
             </div>
 
             <!-- /.row -->

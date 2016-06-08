@@ -257,10 +257,10 @@ include_once 'objects/jeu.php';
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Classement<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="classement_gains.php">Gains</a>
+                                    <a href="classement_gains.php">Général</a>
                                 </li>
                                 <li>
-                                    <a href="classement_general.php">Général</a>
+                                    <a href="classement_general.php">Sans les gains</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

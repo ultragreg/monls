@@ -18,7 +18,18 @@ $db = $database->getConnection();
  
 // Recherche de la saison courante
 $saison = new Saison($db);
-$saison = $saison->chargeSaisonCourante();
+
+// Classement
+$classement = new Classement($db);
+if (isset($_GET['saison_id']))
+{
+  $saison->saison_id = $_GET['saison_id']; 
+  $saison = $saison->chargeSaison();
+} else {
+    // Recherche de la saison courante
+    $saison = $saison->chargeSaisonCourante();
+}
+
  
 // Lecture des statistiques
 $stat = new Statistique($db);

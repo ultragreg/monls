@@ -55,7 +55,8 @@
         $classement->saison_id = $saison->saison_id; 
         $stmtClassement = $classement->litClassement();
         $listeClassementGeneral = $stmtClassement->fetchAll(PDO::FETCH_ASSOC);
-    
+        $i=0;
+
         include_once 'composants/nav.php';
         ?>
 
@@ -65,8 +66,8 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header hidden-xs">Classement par gains</h1>
-                    <h1 class="page-header visible-xs">Class. Gains</h1>
+                    <h1 class="page-header hidden-xs">Classement général</h1>
+                    <h1 class="page-header visible-xs">Class. Gén.</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -74,8 +75,8 @@
 
             <div class="row formulaire">
                 <form  class="form-horizontal" action="classement_gains.php" method="post">
-                    <div class="col-xs-10">
-                        <select class="form-control" name="saisonForm">
+                    <div class="col-xs-12">
+                        <select class="form-control" name="saisonForm" onchange="this.form.submit()">
                         <?php
                             for($i=0;$i<sizeof($listeSaisonsGain);$i++) {
                                 $s=$listeSaisonsGain[$i];
@@ -90,31 +91,29 @@
                         ?>
                         </select>                                   
                     </div>
-                    <div class="col-xs-2">
-                        <span class="pull-right">
-                            <button type="submit" class="btn btn-primary">Ok</button>    
-                        </span>                         
-                    </div>
                 </form>
             </div>
 
 
             <!-- /.row -->
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <table class="table table-striped table-bordered table-hover" id="dataTables-caisse">
                                 <thead class="bg-primary ">
                                     <tr>
                                         <th class="text-center">Position</th>
-                                        <th class="text-center">Nom (Classement Gen.)</th>
+                                        <th class="text-center">Nom</th>
                                         <th class="text-center">Gain</th>
+                                        <th class="text-center hidden-xs hidden-sm">Classement gén.</th>
+                                        <th class="text-center hidden-sm">% bons résultats</th>
                                     </tr>
                                 </thead> 
                                 <tbody>
                                     <?php
-                                    if($num>0) {
+                                    // Si il y a au moins un gain et un jeu
+                                    if($num>0 and $jeu_nombre>0) {
                                         $pos=0;
                                         $cpt=0;
                                         $totalprec=-1;
@@ -124,9 +123,11 @@
                                             if ($total!=$totalprec) {
                                                 $pos=$pos+1;
                                             }
-                                            $positionClassementGen = getPositionClassement($joueur_id,$listeClassementGeneral);
+                                            $positionClassementGen = getPositionClassement($joueur_id,$listeClassementGeneral)-1;
+                                            $moyenneClassementGen = getMoyenneClassement($joueur_id,$listeClassementGeneral);
                                             $tab[$cpt]=array( 'nom'=> $nom, 
                                                             'total' => $total, 
+                                                            'moyenne' => $moyenneClassementGen, 
                                                             'position' =>(($pos)*100)+$positionClassementGen,
                                                             'positionClassement' =>$positionClassementGen);
                                             $totalprec=$total;
@@ -137,22 +138,37 @@
                                            usort($tab, "comparePosition");
                                            $i=0;
                                            $totalGeneral=0;
+                                           $moyenneGeneral=0;
+                                           // Pas encore de valeur ? 
+                                           $bool = false;
                                            foreach ($tab as &$value) {
-                                                echo "<tr>";
-                                                echo "<td class='visible-xs'>".getPositionChiffre($i)."</td>";
-                                                echo "<td class='hidden-xs'>".getPosition($i)."</td>";
-                                                if (!isset($value['positionClassement']))  {
-                                                    $posClassement="";
-                                                } elseif ($value['positionClassement'] == 1)  {
-                                                    $posClassement=" (1 er)";
-                                                } else {
-                                                    $posClassement=" (".$value['positionClassement']." ème)";
+                                                if ($value['total'] != 0) {
+                                                    $bool=true;
+                                                    break;
                                                 }
-                                                echo "<td>" . $value['nom'] . $posClassement . "</td>";
-                                                echo "<td class='text-center'>".number_format($value['total'],2)."&nbsp;&euro;</td>";
-                                                echo "</tr>";
-                                                $totalGeneral=$totalGeneral+number_format($value['total'],2);
-                                                $i=$i+1;
+                                           }
+                                           // Pas encore de résultat ? on n'affiche pas le classement
+                                           if ($bool) {
+                                               foreach ($tab as &$value) {
+                                                    echo "<tr>";
+                                                        echo "<td>".getPositionChiffre($i)."</td>";
+                                                        echo "<td>" . $value['nom']."</td>";
+                                                        echo "<td class='text-center'>".number_format($value['total'],2)."&nbsp;&euro;</td>";
+                                                        echo "<td class='text-center hidden-xs hidden-sm'>".getPositionChiffre($value['positionClassement']) . "</td>";
+                                                        echo "<td class='text-center hidden-sm'>".number_format($value['moyenne'],2)."&nbsp;%</td>";
+                                                    echo "</tr>";
+                                                    $totalGeneral=$totalGeneral+number_format($value['total'],2);
+                                                    $moyenneGeneral=$moyenneGeneral+number_format($value['moyenne'],2);
+                                                    $i=$i+1;
+                                                }
+                                            } else {
+                                                echo "<tr>";
+                                                        echo "<td>&nbsp;</td>";
+                                                        echo "<td>&nbsp;</td>";
+                                                        echo "<td class='text-center'>&nbsp;&nbsp;</td>";
+                                                        echo "<td class='text-center hidden-xs hidden-sm'>&nbsp;</td>";
+                                                        echo "<td class='text-center hidden-sm'>&nbsp;</td>";
+                                                    echo "</tr>";
                                             }
                                         }
                                     }
@@ -163,6 +179,8 @@
                                     <tr>
                                         <th colspan=2 class="text-center">Total</th>
                                         <th class="text-center"><?php echo number_format($totalGeneral,2); ?> &euro;</th>
+                                        <th class="text-center">&nbsp;</th>
+                                        <th class="text-center"><?php echo number_format($moyenneGeneral/$i,2); ?>&nbsp;%</th>
                                     </tr>
                                 </tfoot> 
                             </table>
@@ -171,8 +189,9 @@
                     </div>
                     <!-- /.panel -->
                 </div>
+
                 <!-- /.col-lg-6 -->
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                      <div class="panel-body">
                             <div class="flot-chart">
                                 <div class="flot-chart-content" id="flot-pie-gains"></div>
