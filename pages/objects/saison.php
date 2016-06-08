@@ -53,7 +53,7 @@ class Saison {
     function litSaisons()
     {
       // Requete pour retrouver toutes les saisons dans l'ordre d'insertion en base
-      $query = "select * from saison order by saison_id asc";
+      $query = "select * from saison order by saison_id desc";
       $stmt = $this->conn->prepare( $query );
       $stmt->execute();
       return $stmt;

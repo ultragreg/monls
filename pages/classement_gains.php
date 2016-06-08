@@ -42,8 +42,8 @@
         $stmt = $gain->litGains();
         $num = $stmt->rowCount();
 
-        // Liste des saisons qui ont des gains
-        $stmtSaisonsGain = $gain->litSaisons();
+        // Liste des saisons
+        $stmtSaisonsGain = $saison->litSaisons();
         $listeSaisonsGain = $stmtSaisonsGain->fetchAll(PDO::FETCH_ASSOC);
 
         // Recherche la liste des joueurs
@@ -141,7 +141,9 @@
                                                 echo "<tr>";
                                                 echo "<td class='visible-xs'>".getPositionChiffre($i)."</td>";
                                                 echo "<td class='hidden-xs'>".getPosition($i)."</td>";
-                                                if ($value['positionClassement'] == 1)  {
+                                                if (!isset($value['positionClassement']))  {
+                                                    $posClassement="";
+                                                } elseif ($value['positionClassement'] == 1)  {
                                                     $posClassement=" (1 er)";
                                                 } else {
                                                     $posClassement=" (".$value['positionClassement']." ème)";
