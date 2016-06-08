@@ -148,7 +148,6 @@
                                                 } else {
                                                     $posClassement=" (".$value['positionClassement']." ème)";
                                                 }
-
                                                 echo "<td>" . $value['nom'] . $posClassement . "</td>";
                                                 echo "<td class='text-center'>".number_format($value['total'],2)."&nbsp;&euro;</td>";
                                                 echo "</tr>";

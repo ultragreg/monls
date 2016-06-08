@@ -76,7 +76,7 @@ function compareMoyenne($a, $b)
 // Fonction utilisée par un tri sur la position puis le nom
 function comparePosition($a, $b)
 {
-  return $b["position"] < $a["position"] ? true : ($b["nom"] < $a["nom"] ? true : false);
+  return $b["position"] < $a["position"] ? true : ($b["position"] == $a["position"] && $b["nom"] < $a["nom"] ? true : false);
 }
 
 
