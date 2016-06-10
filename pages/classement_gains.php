@@ -103,11 +103,15 @@
                             <table class="table table-striped table-bordered table-hover" id="dataTables-caisse">
                                 <thead class="bg-primary ">
                                     <tr>
-                                        <th class="text-center">Position</th>
-                                        <th class="text-center">Nom</th>
-                                        <th class="text-center">Gain</th>
+                                        <th class="text-center hidden-xs">Pos.</th>
+                                        <th class="text-center visible-xs"><small>Pos</small></th>
+                                        <th class="text-center hidden-xs">Nom</th>
+                                        <th class="text-center visible-xs"><small>Nom</small></th>
+                                        <th class="text-center hidden-xs">Gain</th>
+                                        <th class="text-center visible-xs"><small>Gain</small></th>
                                         <th class="text-center hidden-xs hidden-sm">Classement gén.</th>
-                                        <th class="text-center hidden-sm">% bons résultats</th>
+                                        <th class="text-center hidden-sm hidden-xs">% bons résultats</th>
+                                        <th class="text-center hidden-sm visible-xs"><small>% bons<br>résultats</small></th>
                                     </tr>
                                 </thead> 
                                 <tbody>
@@ -151,11 +155,19 @@
                                            if ($bool) {
                                                foreach ($tab as &$value) {
                                                     echo "<tr>";
-                                                        echo "<td>".getPositionChiffre($i)."</td>";
-                                                        echo "<td>" . $value['nom']."</td>";
-                                                        echo "<td class='text-center'>".number_format($value['total'],2)."&nbsp;&euro;</td>";
+                                                        echo "<td class='hidden-xs'>".getPositionChiffre($i)."</td>";
+                                                        echo "<td class='visible-xs'>".($i+1)."</td>";
+
+                                                        echo "<td class='hidden-xs'>" . $value['nom']."</td>";
+                                                        echo "<td class='visible-xs'><small>" . $value['nom']."</small></td>";
+
+                                                        echo "<td class='text-center hidden-xs'>".number_format($value['total'],2)."&nbsp;&euro;</td>";
+                                                        echo "<td class='text-center visible-xs'><small>".number_format($value['total'],2)."&nbsp;&euro;</small></td>";
+
                                                         echo "<td class='text-center hidden-xs hidden-sm'>".getPositionChiffre($value['positionClassement']) . "</td>";
-                                                        echo "<td class='text-center hidden-sm'>".number_format($value['moyenne'],2)."&nbsp;%</td>";
+
+                                                        echo "<td class='text-center hidden-sm  hidden-xs'>".number_format($value['moyenne'],2)."&nbsp;%</td>";
+                                                        echo "<td class='text-center hidden-sm visible-xs'><small>".number_format($value['moyenne'],2)."&nbsp;%</small></td>";
                                                     echo "</tr>";
                                                     $totalGeneral=$totalGeneral+number_format($value['total'],2);
                                                     $moyenneGeneral=$moyenneGeneral+number_format($value['moyenne'],2);
@@ -179,8 +191,8 @@
                                     <tr>
                                         <th colspan=2 class="text-center">Total</th>
                                         <th class="text-center"><?php echo number_format($totalGeneral,2); ?> &euro;</th>
-                                        <th class="text-center">&nbsp;</th>
-                                        <th class="text-center"><?php echo number_format($moyenneGeneral/$i,2); ?>&nbsp;%</th>
+                                        <th class="text-center hidden-xs hidden-sm">&nbsp;</th>
+                                        <th class="text-center hidden-sm"><?php echo number_format($moyenneGeneral/$i,2); ?>&nbsp;%</th>
                                     </tr>
                                 </tfoot> 
                             </table>
