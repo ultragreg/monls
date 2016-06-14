@@ -88,8 +88,8 @@
 
             <div class="row formulaire">
                 <form  class="form-horizontal" action="resultats.php" method="post">
-                    <div class="col-xs-10">
-                        <select class="form-control" name="jeuform">
+                    <div class="col-xs-12">
+                        <select class="form-control" name="jeuform" onchange="this.form.submit()">
                         <?php
                             for($i=0;$i<sizeof($listeJeux);$i++) {
                                 $jeu2=$listeJeux[$i];
@@ -103,11 +103,6 @@
                             }
                         ?>
                         </select>                                   
-                    </div>
-                    <div class="col-xs-2">
-                        <span class="pull-right">
-                            <button type="submit" class="btn btn-primary">Ok</button>    
-                        </span>                         
                     </div>
                 </form>
             </div>

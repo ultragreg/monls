@@ -117,7 +117,7 @@
                                 <tbody>
                                     <?php
                                     // Si il y a au moins un gain et un jeu
-                                    if($num>0 and $jeu_nombre>0) {
+                                    if($jeu_nombre>0) {
                                         $pos=0;
                                         $cpt=0;
                                         $totalprec=-1;
@@ -136,6 +136,7 @@
                                                             'positionClassement' =>$positionClassementGen);
                                             $totalprec=$total;
                                             $cpt=$cpt+1;
+
                                         }
                                         // Tableau trié ? 
                                         if ($tab) {
@@ -144,14 +145,16 @@
                                            $totalGeneral=0;
                                            $moyenneGeneral=0;
                                            // Pas encore de valeur ? 
-                                           $bool = false;
+                                           /*$bool = false;
                                            foreach ($tab as &$value) {
                                                 if ($value['total'] != 0) {
                                                     $bool=true;
                                                     break;
                                                 }
-                                           }
+                                           }*/
                                            // Pas encore de résultat ? on n'affiche pas le classement
+                                           // Fonction désactivée ...
+                                           $bool = true;
                                            if ($bool) {
                                                foreach ($tab as &$value) {
                                                     echo "<tr>";
