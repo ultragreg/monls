@@ -57,10 +57,10 @@
                     <h1 class="page-header visible-xs">
                         <?php
                         if ($caisse->caisse_total>0) {
-                            echo "+ ".$caisse->caisse_total."&nbsp;&euro;";
+                            echo "+".$caisse->caisse_total."&nbsp;&euro;";
                         } 
                         else {
-                            echo "-e ".$caisse->caisse_total."&nbsp;&euro;";
+                            echo $caisse->caisse_total."&nbsp;&euro;";
                         }
                         ?>
                     </h1>

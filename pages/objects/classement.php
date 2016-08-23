@@ -31,11 +31,11 @@ class Classement {
 
     function litTroisMeilleursClassement()
     {
-        $query = "select nom from classement, joueur 
-                where classement.saison_id={$this->saison_id} 
-                and classement.joueur_id = joueur.joueur_id
-                order by moyenne desc 
-                Limit 0,3";
+        $query = "select j.nom,c.moyenne,c.evolution, c.rapport, c.posRisque, j.joueur_id 
+                from classement c, joueur j 
+                where c.joueur_id=j.joueur_id 
+                and saison_id={$this->saison_id} 
+                order by moyenne desc, j.nom asc";
         $stmt = $this->conn->prepare( $query );
         $stmt->execute();
         return $stmt;

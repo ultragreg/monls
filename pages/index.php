@@ -47,6 +47,8 @@
         $classement = new Classement($db);
         $classement->saison_id = $saison->saison_id;
         $stmtClassement = $classement->litTroisMeilleursClassement();
+        $stmtClassementGeneral = $classement->litClassement();
+        $listeClassementGeneral = $stmtClassementGeneral->fetchAll(PDO::FETCH_ASSOC);
    
         // Liste des opérations en caisse
         $gain = new Gain($db);
@@ -160,7 +162,7 @@
 
                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-green">
-                        <a href="classement_general.php">
+                        <a href="classement_gains.php">
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
@@ -169,20 +171,49 @@
                                     <div class="col-xs-9 text-right">
                                         <?php
                                         $i=1;
-                                        while ($row = $stmtClassement->fetch(PDO::FETCH_ASSOC)) {
+                                    // Si il y a au moins un jeu
+                                    if($jeu_nombre>0) {
+                                        $pos=0;
+                                        $cpt=0;
+                                        $totalprec=-1;
+                                        $tab=array();
+                                        while ($row = $stmtGain->fetch(PDO::FETCH_ASSOC)) {
                                             extract($row);
-                                            echo "<div class='medium'>{$i}. {$nom}</div>";
-                                            $i=$i+1;
-                                            if ($i>3) {
-                                                break;
+                                            if ($total!=$totalprec) {
+                                                $pos=$pos+1;
                                             }
-                                        } 
-                                        while ($i <= 3 ) {
-                                            echo "<div class='medium'>{$i}. -</div>";
-                                            $i=$i+1;
-                                        }    
-         
-                                        ?>                                        
+                                            $positionClassementGen = getPositionClassement($joueur_id,$listeClassementGeneral)-1;
+                                            $moyenneClassementGen = getMoyenneClassement($joueur_id,$listeClassementGeneral);
+                                            $tab[$cpt]=array( 'nom'=> $nom, 
+                                                            'total' => $total, 
+                                                            'moyenne' => $moyenneClassementGen, 
+                                                            'position' =>(($pos)*100)+$positionClassementGen,
+                                                            'positionClassement' =>$positionClassementGen);
+                                            $totalprec=$total;
+                                            $cpt=$cpt+1;
+
+                                        }
+                                        // Tableau trié ? 
+                                        if ($tab) {
+                                           usort($tab, "comparePosition");
+                                           $totalGeneral=0;
+                                           $moyenneGeneral=0;
+                                           foreach ($tab as &$value) {
+                                                echo "<div class='medium'>" . $i . ". " . $value['nom'] . "</div>";
+                                                $i=$i+1;
+                                                if ($i>3) {
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    // On complète si nécessaire en ajoutant des lignes blanches
+                                    while ($i <= 3 ) {
+                                        echo "<div class='medium'>{$i}. -</div>";
+                                        $i=$i+1;
+                                    }  
+
+                                    ?>          
                                     </div>
                                 </div>
                             </div>
@@ -226,7 +257,7 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-red">
-                        <a href="classement_gains.php">
+                        <a href="classement_general.php">
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
@@ -235,7 +266,7 @@
                                     <div class="col-xs-9 text-right">
                                         <?php
                                         $i=1;
-                                        while ($row = $stmtGain->fetch(PDO::FETCH_ASSOC)) {
+                                        while ($row = $stmtClassement->fetch(PDO::FETCH_ASSOC)) {
                                             extract($row);
                                             echo "<div class='medium'>{$i}. {$nom}</div>";
                                             $i=$i+1;
@@ -253,7 +284,7 @@
                             </div>
 
                            <div class="panel-footer">
-                                <span class="pull-left">Classement par gains</span>
+                                <span class="pull-left">Classement sans les gains</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
