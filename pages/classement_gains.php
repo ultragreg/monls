@@ -116,7 +116,7 @@
                                 </thead> 
                                 <tbody>
                                     <?php
-                                    // Si il y a au moins un gain et un jeu
+                                    // Si il y a au moins un jeu
                                     if($jeu_nombre>0) {
                                         $pos=0;
                                         $cpt=0;
@@ -156,12 +156,21 @@
                                            // Fonction désactivée ...
                                            $bool = true;
                                            if ($bool) {
-                                               foreach ($tab as &$value) {
-                                                    echo "<tr>";
-                                                        echo "<td class='hidden-xs'>".getPositionChiffre($i)."</td>";
-                                                        echo "<td class='visible-xs'>".($i+1)."</td>";
 
-                                                        echo "<td class='hidden-xs'>" . $value['nom']."</td>";
+                                                $moyprec=0;
+                                                $gaiprec=0;
+                                                foreach ($tab as &$value) {
+                                                    echo "<tr>";
+                                                        if ( ($moyprec!=number_format($value['moyenne'],2)) || ($gaiprec!=number_format($value['total'],2)) ) {
+                                                            echo "<td class='hidden-xs'>".getPositionChiffre($i)."</td>";
+                                                            echo "<td class='visible-xs'>".($i+1)."</td>";
+                                                        }
+                                                        else {
+                                                            echo "<td class='hidden-xs'>&nbsp;</td>";
+                                                            echo "<td class='visible-xs'>&nbsp;</td>";
+                                                        }
+
+                                                        echo "<td class='hidden-xs'>" . $value['nom'] . "</td>";
                                                         echo "<td class='visible-xs'><small>" . $value['nom']."</small></td>";
 
                                                         echo "<td class='text-center hidden-xs'>".number_format($value['total'],2)."&nbsp;&euro;</td>";
@@ -175,6 +184,8 @@
                                                     $totalGeneral=$totalGeneral+number_format($value['total'],2);
                                                     $moyenneGeneral=$moyenneGeneral+number_format($value['moyenne'],2);
                                                     $i=$i+1;
+                                                    $moyprec=number_format($value['moyenne'],2);
+                                                    $gaiprec=number_format($value['total'],2);
                                                 }
                                             } else {
                                                 echo "<tr>";

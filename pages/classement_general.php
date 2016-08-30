@@ -92,7 +92,8 @@
                                             <th class="text-center">Pos.</th>
                                             <th class="text-center">Evol.</th>
                                             <th class="text-center">Nom</th>
-                                            <th class="text-center">Moyenne</th>
+                                            <th class="text-center visible-xs">Moy.</th>
+                                            <th class="text-center hidden-xs">Moyenne</th>
                                             <th class="text-center hidden-xs hidden-sm">Moyenne Joueur /<br>Répartition Moy. Saison (*)</th>
                                             <th class="text-center hidden-xs hidden-sm">Position /<br>Prise de risque</th>
                                         </tr>
