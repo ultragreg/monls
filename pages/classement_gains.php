@@ -109,7 +109,7 @@
                                         <th class="text-center visible-xs"><small>Nom</small></th>
                                         <th class="text-center hidden-xs">Gain</th>
                                         <th class="text-center visible-xs"><small>Gain</small></th>
-                                        <th class="text-center hidden-xs hidden-sm">Classement gén.</th>
+                                        <th class="text-center hidden-xs hidden-sm">Classement sans les gains</th>
                                         <th class="text-center hidden-sm hidden-xs">% bons résultats</th>
                                         <th class="text-center hidden-sm visible-xs"><small>% bons<br>résultats</small></th>
                                     </tr>
