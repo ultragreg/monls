@@ -245,7 +245,7 @@
 
                                                  <?php
                                                 // 2b : Ligne Pourcentage Cote
-                                                echo '<div class="progress">';
+                                                //echo '<div class="progress">';
                                                 $indicateurMatch= getIndicateursMatch($indicateurs, $i);
                                                 if (isset($indicateurMatch)) {
                                                   // Indicateur 1
@@ -253,31 +253,31 @@
                                                   if (strlen($res)>0 && strpos($res,"1")===false) {
                                                     $classDeselection="deselection";
                                                   }
-                                                  echo '<div class="progress-bar '.$indicateurMatch["pourcentageC1"].' '.$classDeselection.'" style="width:'.str_replace(',','.',$indicateurMatch["pourcentage1"]).'%"';
-                                                  echo '" id="ind'.$i.'1" >';
-                                                  echo $indicateurMatch["pourcentage1"].'%';
-                                                  echo '</div>';
+                                                  //echo '<div class="progress-bar '.$indicateurMatch["pourcentageC1"].' '.$classDeselection.'" style="width:'.str_replace(',','.',$indicateurMatch["pourcentage1"]).'%"';
+                                                  //echo '" id="ind'.$i.'1" >';
+                                                  //echo $indicateurMatch["pourcentage1"].'%';
+                                                  //echo '</div>';
                                                   // Indicateur 2
                                                   $classDeselection="";
                                                   if (strlen($res)>0 && strpos($res,"N")===false) {
                                                     $classDeselection="deselection";
                                                   }
-                                                  echo '<div class="progress-bar '.$indicateurMatch["pourcentageCN"].' '.$classDeselection.'" style="width:'.str_replace(',','.',$indicateurMatch["pourcentageN"]).'%"';
-                                                  echo '" id="ind'.$i.'N" >';
-                                                  echo $indicateurMatch["pourcentageN"].'%';
-                                                  echo '</div>';
+                                                  //echo '<div class="progress-bar '.$indicateurMatch["pourcentageCN"].' '.$classDeselection.'" style="width:'.str_replace(',','.',$indicateurMatch["pourcentageN"]).'%"';
+                                                  //echo '" id="ind'.$i.'N" >';
+                                                  //echo $indicateurMatch["pourcentageN"].'%';
+                                                  //echo '</div>';
                                                   // Indicateur 3
                                                   $classDeselection="";
                                                   if (strlen($res)>0 && strpos($res,"2")===false) {
                                                     $classDeselection="deselection";
                                                   }
                                                   $difference= 100-str_replace(',','.',$indicateurMatch["pourcentage1"])-str_replace(',','.',$indicateurMatch["pourcentageN"]);
-                                                  echo '<div class="progress-bar '.$indicateurMatch["pourcentageC2"].' '.$classDeselection.'" style="width:'.str_replace(',','.',$difference).'%"';
-                                                  echo '" id="ind'.$i.'2" >';
-                                                  echo $indicateurMatch["pourcentage2"].'%';
-                                                  echo '</div>';
+                                                  //echo '<div class="progress-bar '.$indicateurMatch["pourcentageC2"].' '.$classDeselection.'" style="width:'.str_replace(',','.',$difference).'%"';
+                                                  //echo '" id="ind'.$i.'2" >';
+                                                  //echo $indicateurMatch["pourcentage2"].'%';
+                                                  //echo '</div>';
                                               }
-                                                echo '</div>';
+                                                //echo '</div>';
                                                      
                                             }
                                         }  
